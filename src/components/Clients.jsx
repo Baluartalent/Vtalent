@@ -4,7 +4,7 @@ export default function Clients() {
       name: 'Consorcio Línea 1 Metro de Quito',
       category: 'ACCIONA · Infraestructura',
       services: 'Gestión de Nómina y Capacitación',
-      text: 'Gestionamos la nómina del Consorcio Línea 1, el megaproyecto de infraestructura que construyó los 22,6 km del primer metro de Quito con 15 estaciones. Administramos procesos de nómina bajo normativa ecuatoriana para el equipo operativo del proyecto, que generó 32.700 empleos anuales. Adicionalmente, implementamos programas de capacitación y certificación profesional para los trabajadores del proyecto.',
+      text: 'Administramos la nómina del Metro de Quito, un megaproyecto de 22.6 km y 15 estaciones. Bajo la normativa legal ecuatoriana, gestionamos los pagos de 5,000 trabajadores anuales, abarcando al personal administrativo, técnico y operativo. El servicio incluyó el cálculo de jornadas nocturnas, horas extras y turnos rotativos, además de ejecutar programas de capacitación y certificación profesional. Aseguramos el cumplimiento laboral de su empresa con la experiencia técnica de un proyecto de alta envergadura.',
       logoInitials: 'MQ'
     },
     {

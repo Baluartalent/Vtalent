@@ -4,7 +4,10 @@ export default function Clients() {
       name: 'Consorcio Línea 1 Metro de Quito',
       category: 'ACCIONA · Infraestructura',
       services: 'Gestión Integral de Nómina y Capacitación para el Metro de Quito',
-      text: 'Asumimos la administración global de la nómina del Consorcio Metro de Quito, la infraestructura de transporte subterráneo más importante del país, que cuenta con una extensión de 22.6 km y 15 estaciones estratégicas. Bajo el estricto marco de la normativa legal ecuatoriana, gestionamos oportunamente las compensaciones y beneficios de una nómina activa de 5,000 colaboradores, abarcando al personal administrativo, técnico y operativo de primera línea. Así como el Desarrollo y ejecución de programas de capacitación y certificación profesional para el personal técnico.',
+      text: [
+        'Asumimos la administración global de la nómina del Consorcio Metro de Quito, la infraestructura de transporte subterráneo más importante del país, que cuenta con una extensión de 22.6 km y 15 estaciones estratégicas.',
+        'Bajo el estricto marco de la normativa legal ecuatoriana, gestionamos oportunamente las compensaciones y beneficios de una nómina activa de 5,000 colaboradores, abarcando al personal administrativo, técnico y operativo de primera línea. Así como el desarrollo y ejecución de programas de capacitación y certificación profesional para el personal técnico.'
+      ],
       logoInitials: 'MQ'
     },
     {
@@ -76,9 +79,15 @@ export default function Clients() {
                       }}>
                         Servicios: {client.services}
                       </div>
-                      <p className="client-text" style={{ textAlign: 'justify', fontSize: '0.98rem', color: 'var(--text-main)', lineHeight: '1.7', margin: 0 }}>
-                        {client.text}
-                      </p>
+                      <div className="client-text" style={{ textAlign: 'justify', fontSize: '0.98rem', color: 'var(--text-main)', lineHeight: '1.7', display: 'flex', flexDirection: 'column', gap: '0.85rem', width: '100%' }}>
+                        {Array.isArray(client.text) ? (
+                          client.text.map((paragraph, pIdx) => (
+                            <p key={pIdx} style={{ margin: 0 }}>{paragraph}</p>
+                          ))
+                        ) : (
+                          <p style={{ margin: 0 }}>{client.text}</p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -111,9 +120,15 @@ export default function Clients() {
                   Servicios: {client.services}
                 </div>
 
-                <p className="client-text" style={{ textAlign: 'justify', fontSize: '0.95rem', color: 'var(--text-main)', lineHeight: '1.65', margin: 0 }}>
-                  {client.text}
-                </p>
+                <div className="client-text" style={{ textAlign: 'justify', fontSize: '0.95rem', color: 'var(--text-main)', lineHeight: '1.65', display: 'flex', flexDirection: 'column', gap: '0.75rem', width: '100%' }}>
+                  {Array.isArray(client.text) ? (
+                    client.text.map((paragraph, pIdx) => (
+                      <p key={pIdx} style={{ margin: 0 }}>{paragraph}</p>
+                    ))
+                  ) : (
+                    <p style={{ margin: 0 }}>{client.text}</p>
+                  )}
+                </div>
               </div>
             );
           })}

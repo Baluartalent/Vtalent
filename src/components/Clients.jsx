@@ -3,8 +3,8 @@ export default function Clients() {
     {
       name: 'Consorcio Línea 1 Metro de Quito',
       category: 'ACCIONA · Infraestructura',
-      services: 'Gestión de Nómina y Capacitación',
-      text: 'Administramos la nómina del Metro de Quito, un megaproyecto de 22.6 km y 15 estaciones. Bajo la normativa legal ecuatoriana, gestionamos los pagos de 5,000 trabajadores anuales, abarcando al personal administrativo, técnico y operativo. El servicio incluyó el cálculo de jornadas nocturnas, horas extras y turnos rotativos, además de ejecutar programas de capacitación y certificación profesional. Aseguramos el cumplimiento laboral de su empresa con la experiencia técnica de un proyecto de alta envergadura.',
+      services: 'Gestión Integral de Nómina y Capacitación para el Metro de Quito',
+      text: 'Asumimos la administración global de la nómina del Consorcio Metro de Quito, la infraestructura de transporte subterráneo más importante del país, que cuenta con una extensión de 22.6 km y 15 estaciones estratégicas. Bajo el estricto marco de la normativa legal ecuatoriana, gestionamos oportunamente las compensaciones y beneficios de una nómina activa de 5,000 colaboradores, abarcando al personal administrativo, técnico y operativo de primera línea. Así como el Desarrollo y ejecución de programas de capacitación y certificación profesional para el personal técnico.',
       logoInitials: 'MQ'
     },
     {

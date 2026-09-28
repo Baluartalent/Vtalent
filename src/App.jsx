@@ -19,6 +19,7 @@ import AsesoriaJuridica from './components/AsesoriaJuridica';
 import CapacitacionCorporativa from './components/CapacitacionCorporativa';
 import Cursos from './components/Cursos';
 import PoliticaPrivacidad from './components/PoliticaPrivacidad';
+import VerificarCertificado from './components/VerificarCertificado';
 
 export const scrollToSection = (targetId, smooth = true) => {
   if (!targetId || targetId === 'inicio' || targetId === 'top') {
@@ -48,7 +49,7 @@ function App() {
 
   useEffect(() => {
     const handleLocationChange = () => {
-      const hash = window.location.hash;
+      const hash = window.location.hash.split('?')[0];
       const path = window.location.pathname.replace(/\/+$/, '');
 
       if (hash === '#/nuestros-lideres' || path === '/nuestros-lideres') {
@@ -79,6 +80,16 @@ function App() {
         setCurrentView('cursos');
         window.scrollTo({ top: 0, behavior: 'instant' });
       } else if (
+        hash === '#/verificar-certificado' || 
+        hash === '#/certificados' || 
+        hash === '#/validar-certificado' || 
+        hash === '#/validacion' || 
+        path === '/verificar-certificado' || 
+        path === '/certificados'
+      ) {
+        setCurrentView('verificar-certificado');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else if (
         hash === '#/politica-de-privacidad' || 
         hash === '#politica-de-privacidad' || 
         hash === '#/privacidad' || 
@@ -89,7 +100,8 @@ function App() {
         setCurrentView('politica-de-privacidad');
         window.scrollTo({ top: 0, behavior: 'instant' });
       } else {
-        const id = hash && !hash.startsWith('#/') && !hash.startsWith('#privacidad') && !hash.startsWith('#politica-de-privacidad') ? hash.substring(1) : null;
+        const rawHash = window.location.hash;
+        const id = rawHash && !rawHash.startsWith('#/') && !rawHash.startsWith('#privacidad') && !rawHash.startsWith('#politica-de-privacidad') ? rawHash.substring(1) : null;
         setCurrentView((prev) => {
           if (prev !== 'home') {
             pendingScrollRef.current = id;
@@ -152,6 +164,8 @@ function App() {
         return <CapacitacionCorporativa />;
       case 'cursos':
         return <Cursos onOpenContact={handleOpenContact} />;
+      case 'verificar-certificado':
+        return <VerificarCertificado onOpenContact={handleOpenContact} />;
       case 'politica-de-privacidad':
         return <PoliticaPrivacidad />;
       case 'home':

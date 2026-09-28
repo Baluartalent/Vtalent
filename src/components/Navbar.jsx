@@ -137,6 +137,7 @@ export default function Navbar({ onOpenContact }) {
               </ul>
             </li>
             <li><a href="#/cursos" onClick={(e) => navigateTo(e, '#/cursos')}>CURSOS</a></li>
+            <li><a href="#/verificar-certificado" onClick={(e) => navigateTo(e, '#/verificar-certificado')}>CERTIFICADOS</a></li>
             <li><a href="#casos-de-exito" onClick={(e) => navigateTo(e, '#casos-de-exito')}>CASOS DE ÉXITO</a></li>
             <li><a href="#footer-contacto" onClick={(e) => navigateTo(e, '#footer-contacto')}>CONTACTO</a></li>
             
@@ -144,6 +145,7 @@ export default function Navbar({ onOpenContact }) {
               <span className="mobile-section-title">Cursos & Aula Virtual</span>
               <ul className="mobile-services-list">
                 <li><a href="#/cursos" onClick={(e) => navigateTo(e, '#/cursos')}>Catálogo Completo</a></li>
+                <li><a href="#/verificar-certificado" onClick={(e) => navigateTo(e, '#/verificar-certificado')}>Verificar Certificado Oficial</a></li>
               </ul>
             </li>
 

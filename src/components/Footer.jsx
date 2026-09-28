@@ -40,6 +40,8 @@ export default function Footer() {
               <li><a href="#">Inicio</a></li>
               <li><a href="#nosotros">Por Qué Nosotros</a></li>
               <li><a href="#programas-capacitacion">Programas</a></li>
+              <li><a href="#/cursos">Cursos</a></li>
+              <li><a href="#/verificar-certificado">Verificar Certificado</a></li>
               <li><a href="#casos-de-exito">Casos de Éxito</a></li>
               <li><a href="#footer-contacto">Contacto</a></li>
             </ul>

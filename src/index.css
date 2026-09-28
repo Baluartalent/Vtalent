@@ -719,6 +719,7 @@ a {
   margin-bottom: 1rem;
   background: linear-gradient(135deg, #ffffff 60%, #93c5fd 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #ffffff;
 }
@@ -1603,6 +1604,7 @@ footer {
   margin-bottom: 1.5rem;
   background: linear-gradient(135deg, var(--text-heading) 40%, var(--primary) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -1949,6 +1951,7 @@ footer {
   background: linear-gradient(135deg, var(--text-heading) 40%, var(--primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 @media (max-width: 576px) {
@@ -3656,6 +3659,7 @@ footer {
   margin-bottom: 0.8rem;
   background: linear-gradient(135deg, #ffffff 40%, #93c5fd 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }

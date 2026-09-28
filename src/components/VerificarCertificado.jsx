@@ -13,6 +13,33 @@ export default function VerificarCertificado({ onOpenContact }) {
     return (str || '').toString().trim().toLowerCase().replace(/[^a-z0-9]/g, '');
   };
 
+  const isCodeMatch = (certCode, query) => {
+    const normCert = normalizeStr(certCode);
+    const normQuery = normalizeStr(query);
+    if (!normCert || !normQuery) return false;
+
+    // 1. Coincidencia exacta
+    if (normCert === normQuery) return true;
+
+    // 2. Coincidencia parcial o substring
+    if (normCert.includes(normQuery) || normQuery.includes(normCert)) return true;
+
+    // 3. Coincidencia inteligente por prefijo y número secuencial (ej. REG-BAL-0003 vs REG-BAL-2026-EC-0003)
+    const certDigits = normCert.replace(/\D/g, '');
+    const queryDigits = normQuery.replace(/\D/g, '');
+
+    const certHasBal = normCert.startsWith('regbal') || normCert.startsWith('bal');
+    const queryHasBal = normQuery.startsWith('regbal') || normQuery.startsWith('bal');
+
+    if (certHasBal && queryHasBal && queryDigits) {
+      if (certDigits.endsWith(queryDigits)) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
   const executeSearch = async (query) => {
     const cleanQuery = normalizeStr(query);
     if (!cleanQuery) {
@@ -26,7 +53,7 @@ export default function VerificarCertificado({ onOpenContact }) {
     try {
       const certificates = await fetchLiveCertificates();
       const matches = certificates.filter((cert) => {
-        const matchCode = normalizeStr(cert.code) === cleanQuery;
+        const matchCode = isCodeMatch(cert.code, query);
         const matchId = normalizeStr(cert.idNumber) === cleanQuery;
         return matchCode || matchId;
       });

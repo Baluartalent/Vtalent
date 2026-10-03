@@ -18,20 +18,17 @@ export default function VerificarCertificado({ onOpenContact }) {
     const normQuery = normalizeStr(query);
     if (!normCert || !normQuery) return false;
 
-    // 1. Coincidencia exacta
+    // 1. Coincidencia exacta con el código largo oficial (ej. REG-BAL-2026-EC-0003)
     if (normCert === normQuery) return true;
 
-    // 2. Coincidencia parcial o substring
-    if (normCert.includes(normQuery) || normQuery.includes(normCert)) return true;
-
-    // 3. Coincidencia inteligente por prefijo y número secuencial (ej. REG-BAL-0003 vs REG-BAL-2026-EC-0003)
+    // 2. Coincidencia con código corto oficial del QR (debe incluir el prefijo 'regbal' o 'bal' y el secuencial de 4 dígitos)
     const certDigits = normCert.replace(/\D/g, '');
     const queryDigits = normQuery.replace(/\D/g, '');
 
-    const certHasBal = normCert.startsWith('regbal') || normCert.startsWith('bal');
-    const queryHasBal = normQuery.startsWith('regbal') || normQuery.startsWith('bal');
+    const queryHasPrefix = normQuery.startsWith('regbal') || normQuery.startsWith('bal');
+    const certHasPrefix = normCert.startsWith('regbal') || normCert.startsWith('bal');
 
-    if (certHasBal && queryHasBal && queryDigits) {
+    if (queryHasPrefix && certHasPrefix && queryDigits.length >= 4) {
       if (certDigits.endsWith(queryDigits)) {
         return true;
       }
@@ -54,7 +51,7 @@ export default function VerificarCertificado({ onOpenContact }) {
       const certificates = await fetchLiveCertificates();
       const matches = certificates.filter((cert) => {
         const matchCode = isCodeMatch(cert.code, query);
-        const matchId = normalizeStr(cert.idNumber) === cleanQuery;
+        const matchId = normalizeStr(cert.idNumber) === cleanQuery && cleanQuery.length >= 6;
         return matchCode || matchId;
       });
 

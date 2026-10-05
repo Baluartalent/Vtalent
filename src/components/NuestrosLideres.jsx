@@ -20,21 +20,22 @@ export default function NuestrosLideres() {
       {/* Page Content */}
       <section className="subpage-content section-padding">
         <div className="container">
-          <div className="section-intro" style={{ marginBottom: '2rem', maxWidth: '800px' }}>
+          <div className="section-intro" style={{ marginBottom: '2.5rem', maxWidth: '800px' }}>
             <h2>Nuestra Dirección Estratégica</h2>
             <p style={{ color: 'var(--text-muted)', fontSize: '1rem', fontWeight: '400', lineHeight: '1.6' }}>
-              El equipo de Baluartalent & Co. está integrado por profesionales especializados en Dirección Estratégica de Recursos Humanos, Psicología Organizacional, Educación Continua y Legislación Laboral. Con más de 15 años de trayectoria corporativa liderando áreas de Talento Humano en sectores multisectoriales, combinan la visión del negocio con metodologías ágiles para blindar y potenciar su capital humano.
+              El equipo de Baluartalent & Co. está integrado por profesionales especializados en Dirección Estratégica de Recursos Humanos, Capacitación Continua y Legislación Laboral. Con amplia trayectoria corporativa liderando áreas de Talento Humano en sectores multisectoriales, combinan la visión del negocio con metodologías ágiles para blindar y potenciar su capital humano.
             </p>
           </div>
 
           <div className="leaders-grid">
             {/* Leader 1 */}
             <div className="leader-card">
-              <div style={{ width: '100%', height: '250px', overflow: 'hidden', borderBottom: '1px solid var(--border-light)' }}>
+              <div className="leader-image-wrapper">
                 <img 
                   src="/hector_cevallos.png" 
                   alt="Hector Cevallos - Asesor Jurídico" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} 
+                  className="leader-img"
+                  style={{ objectPosition: 'center top' }}
                 />
               </div>
               <div className="leader-info">
@@ -42,37 +43,18 @@ export default function NuestrosLideres() {
                 <span className="leader-role">Asesor Jurídico</span>
                 <span className="leader-subtitle">Abogado en Derecho Laboral y Seguridad Social</span>
                 <p className="leader-bio">
-                  +20 años de experiencia en litigio, consultoría estratégica y representación jurídica integral en el área procesal y Derecho Laboral
+                  +20 años de experiencia en litigio, consultoría estratégica y representación jurídica integral en el área procesal y Derecho Laboral.
                 </p>
               </div>
             </div>
 
             {/* Leader 2 */}
             <div className="leader-card">
-              <div style={{ width: '100%', height: '250px', overflow: 'hidden', borderBottom: '1px solid var(--border-light)' }}>
-                <img 
-                  src="/mabel_ramos.png" 
-                  alt="Mabel Ramos - Consultora Principal" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }} 
-                />
-              </div>
-              <div className="leader-info">
-                <h3>Mabel Ramos</h3>
-                <span className="leader-role">Consultora Principal</span>
-                <span className="leader-subtitle">Máster en Gestión de Talento Humano y Psicología Laboral</span>
-                <p className="leader-bio">
-                  +15 años liderando áreas de Talento en RRHH, Psicología Organizacional y Educación Continua. Experta en digitalización de nómina y certificaciones ISO.
-                </p>
-              </div>
-            </div>
-
-            {/* Leader 3 */}
-            <div className="leader-card">
-              <div style={{ width: '100%', height: '250px', overflow: 'hidden', borderBottom: '1px solid var(--border-light)' }}>
+              <div className="leader-image-wrapper">
                 <img 
                   src="/jorge_macias.png" 
                   alt="Jorge Macias - Consultor Senior" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }} 
+                  className="leader-img"
                 />
               </div>
               <div className="leader-info">
@@ -85,21 +67,41 @@ export default function NuestrosLideres() {
               </div>
             </div>
 
-            {/* Leader 4 */}
+            {/* Leader 3 */}
             <div className="leader-card">
-              <div style={{ width: '100%', height: '250px', overflow: 'hidden', borderBottom: '1px solid var(--border-light)' }}>
+              <div className="leader-image-wrapper">
                 <img 
-                  src="/fabricio_gomez.png" 
-                  alt="Fabricio Gómez - Consultor Senior" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }} 
+                  src="/sandra_vivian.jpg" 
+                  alt="Sandra Vivian Gualsaqui - Consultora de Talento Humano" 
+                  className="leader-img"
                 />
               </div>
               <div className="leader-info">
-                <h3>Fabricio Gómez</h3>
-                <span className="leader-role">Consultor Senior</span>
-                <span className="leader-subtitle">Especialista en Seguridad, Salud Ocupacional y Sistemas ISO</span>
+                <h3>Sandra Vivian Gualsaqui</h3>
+                <span className="leader-role">Consultora de Talento Humano</span>
+                <span className="leader-subtitle">Especialista en Gestión del Talento y Desarrollo Organizacional</span>
                 <p className="leader-bio">
-                  +8 años de experiencia en gestión de riesgos laborales, diseño e implementación de sistemas de gestión y auditorías internas ISO (9001, 14001, 45001), matrices de cumplimiento legal, planes de autoprotección, brigadas y simulacros.
+                  +8 años de experiencia liderando procesos de atracción de talento, clima laboral, desarrollo de competencias, planes de retención y capacitación corporativa.
+                </p>
+              </div>
+            </div>
+
+            {/* Leader 4 */}
+            <div className="leader-card">
+              <div className="leader-image-wrapper">
+                <img 
+                  src="/ricardo_pavon.png" 
+                  alt="Ricardo Pavón - Consultor Jurídico" 
+                  className="leader-img"
+                  style={{ objectPosition: 'center top' }}
+                />
+              </div>
+              <div className="leader-info">
+                <h3>Ricardo Pavón</h3>
+                <span className="leader-role">Consultor Jurídico</span>
+                <span className="leader-subtitle">Abogado Especialista en Derecho Laboral y Corporativo</span>
+                <p className="leader-bio">
+                  +8 años de experiencia en asesoría legal preventiva, resolución de controversias laborales, cumplimiento normativo y blindaje contractual para empresas.
                 </p>
               </div>
             </div>

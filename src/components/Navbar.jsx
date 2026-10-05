@@ -111,7 +111,7 @@ export default function Navbar({ onOpenContact }) {
                 </svg>
               </a>
               <ul className="dropdown-menu">
-                {/* <li><a href="#/nuestros-lideres" onClick={(e) => navigateTo(e, '#/nuestros-lideres')}>Nuestros líderes</a></li> */}
+                <li><a href="#/nuestros-lideres" onClick={(e) => navigateTo(e, '#/nuestros-lideres')}>Nuestros líderes</a></li>
                 <li><a href="#/mision-vision" onClick={(e) => navigateTo(e, '#/mision-vision')}>Misión y Visión</a></li>
                 <li><a href="#/valores-corporativos" onClick={(e) => navigateTo(e, '#/valores-corporativos')}>Valores Corporativos</a></li>
               </ul>

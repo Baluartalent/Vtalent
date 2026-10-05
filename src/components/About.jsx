@@ -69,7 +69,7 @@ export default function About() {
         <div className="about-visual">
           <div className="about-image-wrapper">
             <img 
-              src="/about_talent.png" 
+              src="/hero_recruitment.png" 
               alt="Gestión de Talento Humano y Consultoría - BALUARTALENT & Co." 
               className="about-image"
               loading="lazy"

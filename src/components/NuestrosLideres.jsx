@@ -86,25 +86,6 @@ export default function NuestrosLideres() {
               </div>
             </div>
 
-            {/* Leader 4 */}
-            <div className="leader-card">
-              <div className="leader-image-wrapper">
-                <img 
-                  src="/ricardo_pavon.png" 
-                  alt="Ricardo Pavón - Consultor Jurídico" 
-                  className="leader-img"
-                  style={{ objectPosition: 'center top' }}
-                />
-              </div>
-              <div className="leader-info">
-                <h3>Ricardo Pavón</h3>
-                <span className="leader-role">Consultor Jurídico</span>
-                <span className="leader-subtitle">Abogado Especialista en Derecho Laboral y Corporativo</span>
-                <p className="leader-bio">
-                  +8 años de experiencia en asesoría legal preventiva, resolución de controversias laborales, cumplimiento normativo y blindaje contractual para empresas.
-                </p>
-              </div>
-            </div>
           </div>
 
           <div style={{ marginTop: '4rem', textAlign: 'center' }}>

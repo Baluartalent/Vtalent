@@ -206,7 +206,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
           <div className="section-title text-center">
             <span className="subtitle">MARCO LEGAL OBLIGATORIO &bull; ECUADOR</span>
             <h2>¿Por qué tu empresa debe cumplir antes del 30 de Noviembre?</h2>
-            <p className="section-desc" style={{ maxWidth: '820px', margin: '0 auto' }}>
+            <p className="section-desc" style={{ maxWidth: '820px', textAlign: 'left', margin: '0 0 1.5rem 0' }}>
               El Ministerio del Trabajo de Ecuador ha intensificado los controles y auditorías de cumplimiento laboral sobre la
               <strong> Ley Orgánica para la Igualdad Salarial</strong> y el <strong>Acuerdo Ministerial MDT-2025-006</strong>.
             </p>
@@ -258,7 +258,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
           <div className="section-title text-center">
             <span className="subtitle">PLAN FORMATIVO REGLAMENTARIO</span>
             <h2>Contenido Académico y Estructura del Programa (40 Horas)</h2>
-            <p className="section-desc" style={{ maxWidth: '780px', margin: '0 auto' }}>
+            <p className="section-desc" style={{ maxWidth: '780px', textAlign: 'left', margin: '0 0 1.5rem 0' }}>
               Un programa diseñado por especialistas en derecho laboral, remuneraciones y desarrollo organizacional, asegurando aplicabilidad práctica y total apego a las disposiciones del Ministerio del Trabajo.
             </p>
           </div>
@@ -294,14 +294,13 @@ export default function IgualdadSalarial({ onOpenContact }) {
           <div className="section-title text-center">
             <span className="subtitle">MODALIDADES B2B FLEXIBLES</span>
             <h2>Opciones de Capacitación Adaptadas a tu Operación</h2>
-            <p className="section-desc" style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <p className="section-desc" style={{ maxWidth: '800px', textAlign: 'left', margin: '0 0 1.5rem 0' }}>
               Evita fricciones en la jornada laboral. Implementamos la metodología que mejor se adapte al volumen y dinamismo de tu nómina.
             </p>
           </div>
 
           <div className="modalities-grid">
-            <div className="modality-card featured-modality">
-              <div className="modality-popular-tag">Más Elegida por Empresas</div>
+            <div className="modality-card">
               <div className="modality-icon">💻</div>
               <h3>Virtual Asincrónica (Plataforma 24/7)</h3>
               <p>

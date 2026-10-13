@@ -6628,6 +6628,10 @@ footer {
   transform: translateY(-1px);
 }
 
+.section-desc {
+  text-align: left;
+}
+
 /* Normative cards grid */
 .normative-cards-grid {
   display: grid;

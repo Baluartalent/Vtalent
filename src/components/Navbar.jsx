@@ -6,6 +6,22 @@ export default function Navbar({ onOpenContact }) {
   const [mobileNosotrosOpen, setMobileNosotrosOpen] = useState(false);
   const [mobileServiciosOpen, setMobileServiciosOpen] = useState(false);
 
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [currentHash, setCurrentHash] = useState(window.location.hash);
+
+  useEffect(() => {
+    const updateLocation = () => {
+      setCurrentPath(window.location.pathname);
+      setCurrentHash(window.location.hash);
+    };
+    window.addEventListener('popstate', updateLocation);
+    window.addEventListener('hashchange', updateLocation);
+    return () => {
+      window.removeEventListener('popstate', updateLocation);
+      window.removeEventListener('hashchange', updateLocation);
+    };
+  }, []);
+
   const closeMobileMenus = () => {
     setMobileMenuOpen(false);
     setMobileNosotrosOpen(false);
@@ -14,25 +30,59 @@ export default function Navbar({ onOpenContact }) {
 
   const navigateTo = (e, href) => {
     closeMobileMenus();
-    if (href.startsWith('#/')) {
-      // Subpage routing
-      if (window.location.hash === href) {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-      } else {
-        window.location.hash = href;
-      }
-    } else if (href === '#' || href === '#inicio') {
+
+    // 1. Clean subpage routing (ej. /cursos, /verificar-certificado)
+    if (href.startsWith('/') && !href.startsWith('/#')) {
       e.preventDefault();
-      if (window.location.hash && window.location.hash !== '#' && window.location.hash !== '#inicio') {
+      if (window.location.pathname !== href || window.location.hash) {
+        window.history.pushState(null, '', href);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      }
+      setCurrentPath(href);
+      setCurrentHash('');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      return;
+    }
+
+    // 2. Hash subpage routing legacy fallback (ej. #/cursos -> /cursos)
+    if (href.startsWith('#/')) {
+      e.preventDefault();
+      const cleanPath = href.replace(/^#/, '');
+      if (window.location.pathname !== cleanPath || window.location.hash) {
+        window.history.pushState(null, '', cleanPath);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      }
+      setCurrentPath(cleanPath);
+      setCurrentHash('');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      return;
+    }
+
+    // 3. Home navigation
+    if (href === '#' || href === '#inicio' || href === '/') {
+      e.preventDefault();
+      const onSubpage = window.location.pathname !== '/' || (window.location.hash && window.location.hash.startsWith('#/'));
+      if (onSubpage) {
+        window.history.pushState(null, '', '/');
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      } else if (window.location.hash && window.location.hash !== '#' && window.location.hash !== '#inicio') {
         window.location.hash = '#';
       }
+      setCurrentPath('/');
+      setCurrentHash('');
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (href.startsWith('#')) {
+      return;
+    }
+
+    // 4. In-page anchor navigation (ej. #nosotros, #programas)
+    if (href.startsWith('#')) {
       e.preventDefault();
       const targetId = href.replace('#', '');
-      const onSubpage = window.location.hash && window.location.hash.startsWith('#/');
+      const onSubpage = window.location.pathname !== '/' || (window.location.hash && window.location.hash.startsWith('#/'));
       if (onSubpage) {
-        window.location.hash = href;
+        window.history.pushState(null, '', `/#${targetId}`);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+        setCurrentPath('/');
       } else {
         if (window.location.hash !== href) {
           window.location.hash = href;
@@ -48,6 +98,7 @@ export default function Navbar({ onOpenContact }) {
           });
         }
       }
+      setCurrentHash(href);
     }
   };
 
@@ -62,6 +113,14 @@ export default function Navbar({ onOpenContact }) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const isHomeActive = currentPath === '/' && (!currentHash || currentHash === '#' || currentHash === '#inicio');
+  const isNosotrosActive = ['/nuestros-lideres', '/mision-vision', '/valores-corporativos'].includes(currentPath);
+  const isProgramasActive = ['/plan-de-accion', '/modelo-de-desarrollo', '/gestion-nomina', '/asesoria-juridica', '/capacitacion-corporativa'].includes(currentPath);
+  const isCursosActive = currentPath === '/cursos';
+  const isCertificadosActive = currentPath === '/verificar-certificado';
+  const isCasosActive = currentHash === '#casos-de-exito';
+  const isContactoActive = currentHash === '#footer-contacto';
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
@@ -81,7 +140,7 @@ export default function Navbar({ onOpenContact }) {
       {/* 2. MIDDLE BAR (Fila Media - Navegación Principal) */}
       <div className="navbar-middle-bar">
         <div className="container middle-bar-container">
-          <a href="#" className="logo" onClick={(e) => navigateTo(e, '#')}>
+          <a href="/" className="logo" onClick={(e) => navigateTo(e, '/')}>
             <img 
               src="/logo.png" 
               alt="BALUARTALENT & Co." 
@@ -95,7 +154,11 @@ export default function Navbar({ onOpenContact }) {
 
           {/* Menú de Navegación Principal */}
           <ul className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
-            <li><a href="#" className="active" onClick={(e) => navigateTo(e, '#')}>INICIO</a></li>
+            <li>
+              <a href="/" className={isHomeActive ? 'active' : ''} onClick={(e) => navigateTo(e, '/')}>
+                INICIO
+              </a>
+            </li>
             <li className={`nav-item-dropdown ${mobileNosotrosOpen ? 'mobile-open' : ''}`}>
               <a 
                 href="#nosotros" 
@@ -103,7 +166,7 @@ export default function Navbar({ onOpenContact }) {
                   e.preventDefault(); 
                   setMobileNosotrosOpen(!mobileNosotrosOpen); 
                 }}
-                className="dropdown-toggle"
+                className={`dropdown-toggle ${isNosotrosActive ? 'active' : ''}`}
               >
                 NOSOTROS
                 <svg className="dropdown-arrow-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '0.35rem', transition: 'transform 0.3s ease' }}>
@@ -111,9 +174,9 @@ export default function Navbar({ onOpenContact }) {
                 </svg>
               </a>
               <ul className="dropdown-menu">
-                <li><a href="#/nuestros-lideres" onClick={(e) => navigateTo(e, '#/nuestros-lideres')}>Nuestros líderes</a></li>
-                <li><a href="#/mision-vision" onClick={(e) => navigateTo(e, '#/mision-vision')}>Misión y Visión</a></li>
-                <li><a href="#/valores-corporativos" onClick={(e) => navigateTo(e, '#/valores-corporativos')}>Valores Corporativos</a></li>
+                <li><a href="/nuestros-lideres" onClick={(e) => navigateTo(e, '/nuestros-lideres')}>Nuestros líderes</a></li>
+                <li><a href="/mision-vision" onClick={(e) => navigateTo(e, '/mision-vision')}>Misión y Visión</a></li>
+                <li><a href="/valores-corporativos" onClick={(e) => navigateTo(e, '/valores-corporativos')}>Valores Corporativos</a></li>
               </ul>
             </li>
             <li className={`nav-item-dropdown ${mobileServiciosOpen ? 'mobile-open' : ''}`}>
@@ -123,7 +186,7 @@ export default function Navbar({ onOpenContact }) {
                   e.preventDefault(); 
                   setMobileServiciosOpen(!mobileServiciosOpen); 
                 }}
-                className="dropdown-toggle"
+                className={`dropdown-toggle ${isProgramasActive ? 'active' : ''}`}
               >
                 PROGRAMAS
                 <svg className="dropdown-arrow-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '0.35rem', transition: 'transform 0.3s ease' }}>
@@ -131,21 +194,23 @@ export default function Navbar({ onOpenContact }) {
                 </svg>
               </a>
               <ul className="dropdown-menu">
+                <li><a href="/capacitacion-igualdad-salarial" onClick={(e) => navigateTo(e, '/capacitacion-igualdad-salarial')}>⭐ Ley de Igualdad Salarial (MDT)</a></li>
                 <li><a href="#programas-capacitacion" onClick={(e) => navigateTo(e, '#programas-capacitacion')}>Programas de Capacitación</a></li>
-                <li><a href="#/plan-de-accion" onClick={(e) => navigateTo(e, '#/plan-de-accion')}>Plan de Acción</a></li>
-                <li><a href="#/modelo-de-desarrollo" onClick={(e) => navigateTo(e, '#/modelo-de-desarrollo')}>Modelo de Desarrollo</a></li>
+                <li><a href="/plan-de-accion" onClick={(e) => navigateTo(e, '/plan-de-accion')}>Plan de Acción</a></li>
+                <li><a href="/modelo-de-desarrollo" onClick={(e) => navigateTo(e, '/modelo-de-desarrollo')}>Modelo de Desarrollo</a></li>
               </ul>
             </li>
-            <li><a href="#/cursos" onClick={(e) => navigateTo(e, '#/cursos')}>CURSOS</a></li>
-            <li><a href="#/verificar-certificado" onClick={(e) => navigateTo(e, '#/verificar-certificado')}>CERTIFICADOS</a></li>
-            <li><a href="#casos-de-exito" onClick={(e) => navigateTo(e, '#casos-de-exito')}>CASOS DE ÉXITO</a></li>
-            <li><a href="#footer-contacto" onClick={(e) => navigateTo(e, '#footer-contacto')}>CONTACTO</a></li>
+            <li><a href="/cursos" className={isCursosActive ? 'active' : ''} onClick={(e) => navigateTo(e, '/cursos')}>CURSOS</a></li>
+            <li><a href="/verificar-certificado" className={isCertificadosActive ? 'active' : ''} onClick={(e) => navigateTo(e, '/verificar-certificado')}>CERTIFICADOS</a></li>
+            <li><a href="#casos-de-exito" className={isCasosActive ? 'active' : ''} onClick={(e) => navigateTo(e, '#casos-de-exito')}>CASOS DE ÉXITO</a></li>
+            <li><a href="#footer-contacto" className={isContactoActive ? 'active' : ''} onClick={(e) => navigateTo(e, '#footer-contacto')}>CONTACTO</a></li>
             
             <li className="mobile-only-menu-section">
               <span className="mobile-section-title">Cursos & Aula Virtual</span>
               <ul className="mobile-services-list">
-                <li><a href="#/cursos" onClick={(e) => navigateTo(e, '#/cursos')}>Catálogo Completo</a></li>
-                <li><a href="#/verificar-certificado" onClick={(e) => navigateTo(e, '#/verificar-certificado')}>Verificar Certificado Oficial</a></li>
+                <li><a href="/capacitacion-igualdad-salarial" onClick={(e) => navigateTo(e, '/capacitacion-igualdad-salarial')}>⭐ Ley de Igualdad Salarial MDT-2025-006</a></li>
+                <li><a href="/cursos" onClick={(e) => navigateTo(e, '/cursos')}>Catálogo Completo</a></li>
+                <li><a href="/verificar-certificado" onClick={(e) => navigateTo(e, '/verificar-certificado')}>Verificar Certificado Oficial</a></li>
               </ul>
             </li>
 

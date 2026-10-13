@@ -1,9 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Página de Inicio Principal -->
   <url>
     <loc>https://baluartalent.com/</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Catálogo Oficial de Cursos y Capacitación Continua (Prioridad Alta SEO) -->
+  <url>
+    <loc>https://baluartalent.com/cursos</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Capacitación Obligatoria Ley de Igualdad Salarial MDT-2025-006 (Prioridad Máxima B2B) -->
+  <url>
+    <loc>https://baluartalent.com/capacitacion-igualdad-salarial</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Validación y Consulta Oficial de Certificados -->
+  <url>
+    <loc>https://baluartalent.com/verificar-certificado</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Programas de Capacitación Corporativa In-Company -->
+  <url>
+    <loc>https://baluartalent.com/capacitacion-corporativa</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Gestión y Outsourcing de Nómina -->
+  <url>
+    <loc>https://baluartalent.com/gestion-de-nomina</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Asesoría Jurídica y Legal Laboral -->
+  <url>
+    <loc>https://baluartalent.com/asesoria-juridica-legal</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Nuestros Líderes y Equipo Directivo -->
+  <url>
+    <loc>https://baluartalent.com/nuestros-lideres</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Modelo de Desarrollo Organizacional -->
+  <url>
+    <loc>https://baluartalent.com/modelo-de-desarrollo</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Plan de Acción Estratégico -->
+  <url>
+    <loc>https://baluartalent.com/plan-de-accion</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Misión y Visión -->
+  <url>
+    <loc>https://baluartalent.com/mision-vision</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Valores Corporativos -->
+  <url>
+    <loc>https://baluartalent.com/valores-corporativos</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Política de Privacidad -->
+  <url>
+    <loc>https://baluartalent.com/politica-de-privacidad</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

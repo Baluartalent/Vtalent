@@ -1,4 +1,40 @@
 export default function Footer() {
+  const handleNav = (e, href) => {
+    if (href.startsWith('/') && !href.startsWith('/#')) {
+      e.preventDefault();
+      if (window.location.pathname !== href || window.location.hash) {
+        window.history.pushState(null, '', href);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      }
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      return;
+    }
+
+    if (href === '#' || href === '/') {
+      e.preventDefault();
+      if (window.location.pathname !== '/' || window.location.hash) {
+        window.history.pushState(null, '', '/');
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.replace('#', '');
+      if (window.location.pathname !== '/') {
+        window.history.pushState(null, '', `/#${targetId}`);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      } else {
+        const elem = document.getElementById(targetId);
+        if (elem) {
+          elem.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
   return (
     <footer>
       <div className="container">
@@ -37,13 +73,13 @@ export default function Footer() {
           <div className="footer-column">
             <h4>Enlaces</h4>
             <ul className="footer-links">
-              <li><a href="#">Inicio</a></li>
-              <li><a href="#nosotros">Por Qué Nosotros</a></li>
-              <li><a href="#programas-capacitacion">Programas</a></li>
-              <li><a href="#/cursos">Cursos</a></li>
-              <li><a href="#/verificar-certificado">Verificar Certificado</a></li>
-              <li><a href="#casos-de-exito">Casos de Éxito</a></li>
-              <li><a href="#footer-contacto">Contacto</a></li>
+              <li><a href="/" onClick={(e) => handleNav(e, '/')}>Inicio</a></li>
+              <li><a href="#nosotros" onClick={(e) => handleNav(e, '#nosotros')}>Por Qué Nosotros</a></li>
+              <li><a href="#programas-capacitacion" onClick={(e) => handleNav(e, '#programas-capacitacion')}>Programas</a></li>
+              <li><a href="/cursos" onClick={(e) => handleNav(e, '/cursos')}>Cursos</a></li>
+              <li><a href="/verificar-certificado" onClick={(e) => handleNav(e, '/verificar-certificado')}>Verificar Certificado</a></li>
+              <li><a href="#casos-de-exito" onClick={(e) => handleNav(e, '#casos-de-exito')}>Casos de Éxito</a></li>
+              <li><a href="#footer-contacto" onClick={(e) => handleNav(e, '#footer-contacto')}>Contacto</a></li>
             </ul>
           </div>
 
@@ -51,6 +87,7 @@ export default function Footer() {
           <div className="footer-column">
             <h4>Programas</h4>
             <ul className="footer-links">
+              <li><a href="/capacitacion-igualdad-salarial" onClick={(e) => handleNav(e, '/capacitacion-igualdad-salarial')}>⭐ Ley de Igualdad Salarial (MDT)</a></li>
               <li><a href="#programas-capacitacion">Gestión del Talento Humano</a></li>
               <li><a href="#programas-capacitacion">Seguridad y Salud Ocupacional</a></li>
               <li><a href="#programas-capacitacion">Marketing, Ventas y Servicio</a></li>
@@ -107,9 +144,9 @@ export default function Footer() {
         <div className="footer-bottom">
           <p>© 2026 BALUARTALENT & Co. Consultoría Integral. Todos los derechos reservados. Quito, Ecuador.</p>
           <div style={{ display: 'flex', gap: '1rem' }}>
-            <a href="#/politica-de-privacidad" style={{ color: 'var(--text-muted)' }}>Política de Privacidad</a>
+            <a href="/politica-de-privacidad" onClick={(e) => handleNav(e, '/politica-de-privacidad')} style={{ color: 'var(--text-muted)' }}>Política de Privacidad</a>
             <span style={{ color: 'var(--border-light)' }}>|</span>
-            <a href="#/politica-de-privacidad" style={{ color: 'var(--text-muted)' }}>Términos y Condiciones</a>
+            <a href="/politica-de-privacidad" onClick={(e) => handleNav(e, '/politica-de-privacidad')} style={{ color: 'var(--text-muted)' }}>Términos y Condiciones</a>
           </div>
         </div>
 

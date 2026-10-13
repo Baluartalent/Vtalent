@@ -20,6 +20,8 @@ import CapacitacionCorporativa from './components/CapacitacionCorporativa';
 import Cursos from './components/Cursos';
 import PoliticaPrivacidad from './components/PoliticaPrivacidad';
 import VerificarCertificado from './components/VerificarCertificado';
+import IgualdadSalarial from './components/IgualdadSalarial';
+import { updateSEO } from './utils/seo';
 
 export const scrollToSection = (targetId, smooth = true) => {
   if (!targetId || targetId === 'inicio' || targetId === 'top') {
@@ -80,6 +82,14 @@ function App() {
         setCurrentView('cursos');
         window.scrollTo({ top: 0, behavior: 'instant' });
       } else if (
+        hash === '#/capacitacion-igualdad-salarial' || 
+        hash === '#/igualdad-salarial' || 
+        path === '/capacitacion-igualdad-salarial' || 
+        path === '/igualdad-salarial'
+      ) {
+        setCurrentView('capacitacion-igualdad-salarial');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else if (
         hash === '#/verificar-certificado' || 
         hash === '#/certificados' || 
         hash === '#/validar-certificado' || 
@@ -119,6 +129,12 @@ function App() {
       if (typeof window !== 'undefined' && window.fbq) {
         window.fbq('track', 'PageView');
       }
+
+      // Normalizar URLs limpias si el visitante llega por hash antiguo (ej. #/cursos -> /cursos)
+      if (window.location.hash.startsWith('#/') && window.history.replaceState) {
+        const cleanPath = window.location.hash.replace(/^#/, '');
+        window.history.replaceState(null, '', cleanPath);
+      }
     };
 
     handleLocationChange();
@@ -129,6 +145,11 @@ function App() {
       window.removeEventListener('popstate', handleLocationChange);
     };
   }, []);
+
+  // Actualizar Título, Metadatos Canónicos y Datos Estructurados JSON-LD al cambiar de vista
+  useEffect(() => {
+    updateSEO(currentView);
+  }, [currentView]);
 
   // When returning from a subpage to home, immediately scroll to the target section once home mounts
   useEffect(() => {
@@ -164,6 +185,8 @@ function App() {
         return <CapacitacionCorporativa />;
       case 'cursos':
         return <Cursos onOpenContact={handleOpenContact} />;
+      case 'capacitacion-igualdad-salarial':
+        return <IgualdadSalarial onOpenContact={handleOpenContact} />;
       case 'verificar-certificado':
         return <VerificarCertificado onOpenContact={handleOpenContact} />;
       case 'politica-de-privacidad':

@@ -6479,7 +6479,7 @@ footer {
 
 .igualdad-cta-btn {
   background: linear-gradient(135deg, #4451C5 0%, #2A327B 100%);
-  color: #ffffff;
+  color: #ffffff !important;
   border: none;
   font-weight: 700;
   cursor: pointer;
@@ -6489,10 +6489,15 @@ footer {
   font-family: var(--font-heading);
   font-size: 1rem;
   transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .igualdad-cta-btn:hover {
   transform: translateY(-2px);
+  color: #ffffff !important;
   box-shadow: 0 12px 30px rgba(68, 81, 197, 0.65);
 }
 

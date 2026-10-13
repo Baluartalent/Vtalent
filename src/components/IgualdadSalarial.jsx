@@ -139,12 +139,12 @@ export default function IgualdadSalarial({ onOpenContact }) {
 
               {/* Acciones principales B2B */}
               <div className="igualdad-hero-cta-group">
-                <button 
+                <a 
+                  href="mailto:info@baluartalent.com?subject=Solicitud%20de%20Asesor%C3%ADa%20y%20Cotizaci%C3%B3n%20B2B%20-%20Capacitaci%C3%B3n%20Igualdad%20Salarial"
                   className="btn-primary-glow btn-lg igualdad-cta-btn" 
-                  onClick={onOpenContact}
                 >
                   Solicitar Asesoría &amp; Cotización B2B 💼
-                </button>
+                </a>
 
                 <a 
                   href={`https://wa.me/593964196795?text=${whatsappMessage}`}
@@ -386,12 +386,6 @@ export default function IgualdadSalarial({ onOpenContact }) {
                   </div>
                 </div>
               </div>
-
-              <div className="deliverables-btn-wrap">
-                <button className="btn-primary-glow btn-lg" onClick={onOpenContact}>
-                  Solicitar Asesoría &amp; Cotización Inmediata 💼
-                </button>
-              </div>
             </div>
 
             <div className="deliverables-card-highlight">
@@ -468,9 +462,6 @@ export default function IgualdadSalarial({ onOpenContact }) {
             </p>
 
             <div className="cta-box-buttons">
-              <button className="btn-primary-glow btn-lg" onClick={onOpenContact}>
-                Solicitar Propuesta para mi Empresa 💼
-              </button>
               <a 
                 href={`https://wa.me/593964196795?text=${whatsappMessage}`}
                 target="_blank" 

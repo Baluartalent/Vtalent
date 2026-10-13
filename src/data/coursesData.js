@@ -5,45 +5,6 @@
 
 export const COURSES_DATA = [
   {
-    id: 'igualdad-salarial',
-    isStarCourse: true,
-    isCorporateB2B: true,
-    landingUrl: '/capacitacion-igualdad-salarial',
-    title: 'Ley Orgánica de Igualdad Salarial y Acuerdo Ministerial MDT-2025-006',
-    category: 'Capacitación Obligatoria & Legal',
-    price: 'Cotización B2B',
-    instructor: 'Equipo Consultor Legal & Laboral BALUARTALENT',
-    image: '/courses/igualdad_salarial.jpg',
-    colorAccent: '#dc2626',
-    data40h: {
-      duration: '40 Horas',
-      durationLabel: '40 Horas Reglamentarias',
-      badge: 'Obligatorio MDT 2025',
-      price: 'Cotización In-Company',
-      deadlineNotice: 'Plazo Legal: Antes del 30 de Noviembre',
-      shortDesc: 'Asegura el cumplimiento de tu empresa con la capacitación obligatoria anual de igualdad salarial. Exigida por la Ley Orgánica de Igualdad Salarial y Acuerdo Ministerial MDT-2025-006 para todo el personal antes del 30 de noviembre. Certificado con respaldo normativo ante el Ministerio del Trabajo.',
-      highlights: [
-        'Obligatorio para todo el personal de la empresa',
-        'Carga reglamentaria obligatoria de 40 horas académicas',
-        'Fecha límite legal: Antes del 30 de noviembre',
-        'Certificación y documentación para inspecciones MDT'
-      ]
-    },
-    data8h: {
-      duration: '40 Horas',
-      durationLabel: 'Programa Completo B2B',
-      badge: 'Normativa Oficial',
-      price: 'Cotización B2B',
-      shortDesc: 'Programa formativo integral de 40 horas reglamentarias para todo el personal de la organización, diseñado bajo el marco del Acuerdo Ministerial MDT-2025-006 y la Ley de Igualdad Salarial.',
-      highlights: [
-        'Diagnóstico de brecha salarial corporativa',
-        'Metodología de valoración de puestos sin sesgo',
-        'Planes de igualdad salarial y políticas internas',
-        'Registro formal para inspecciones de trabajo'
-      ]
-    }
-  },
-  {
     id: 1,
     title: 'Gestión de Recursos Humanos y Administración y Legislación Laboral Aplicada',
     category: 'Talento Humano & Legal',
@@ -397,7 +358,6 @@ export const COURSES_DATA = [
 
 export const CATEGORIES = [
   'Todos',
-  'Capacitación Obligatoria & Legal',
   'Talento Humano & Legal',
   'Seguridad & Salud (SST)',
   'Salud Ocupacional',

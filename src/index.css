@@ -6408,8 +6408,13 @@ footer {
   color: #ffffff;
 }
 
+.igualdad-header h1,
 .igualdad-hero-title {
-  color: #ffffff;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
   font-size: 2.5rem;
   font-weight: 800;
   line-height: 1.2;

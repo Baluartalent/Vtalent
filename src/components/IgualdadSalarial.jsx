@@ -93,7 +93,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
                 </span>
               </div>
 
-              <h1 className="igualdad-hero-title">
+              <h1 className="igualdad-hero-title" style={{ color: '#ffffff', WebkitTextFillColor: '#ffffff', background: 'none' }}>
                 Ley Orgánica de Igualdad Salarial y Acuerdo Ministerial MDT-2025-006
               </h1>
 

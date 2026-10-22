@@ -14,7 +14,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
   const faqs = [
     {
       q: '¿Es obligatoria esta capacitación para todas las empresas en Ecuador?',
-      a: 'Sí. Conforme a la Ley Orgánica para la Igualdad Salarial entre Mujeres y Hombres y el Acuerdo Ministerial MDT-2025-006 emitido por el Ministerio del Trabajo, todas las empresas del sector privado y entidades empleadoras deben capacitar de manera obligatoria a todo su personal en materia de igualdad de remuneración y no discriminación salarial.'
+      a: 'Sí. Conforme a la Ley Orgánica para la Igualdad Salarial entre Mujeres y Hombres y el Acuerdo Ministerial MDT-2025-006 emitido por el Ministerio del Trabajo, todas las empresas del sector privado y entidades empleadoras públicas deben capacitar de manera obligatoria a todo su personal en materia de igualdad de remuneración y no discriminación salarial.'
     },
     {
       q: '¿Cuál es la fecha límite para cumplir con la capacitación?',
@@ -22,52 +22,85 @@ export default function IgualdadSalarial({ onOpenContact }) {
     },
     {
       q: '¿Por qué la duración debe ser de 40 horas académicas?',
-      a: 'La carga horaria de 40 horas académicas es la duración reglamentaria establecida para garantizar que el personal comprenda los principios de trabajo de igual valor, valoración objetiva de puestos, prevención de brecha de género y cumplimiento del marco legal vigente.'
+      a: 'El Acuerdo Ministerial MDT-2025-006 establece una carga técnica reglamentaria obligatoria de 40 horas académicas divididas en 4 módulos para garantizar que el personal comprenda los principios de trabajo de igual valor, valoración objetiva de puestos, prevención de brecha de género y cumplimiento del marco legal vigente.'
     },
     {
       q: '¿Qué personal de la empresa debe recibir la capacitación?',
-      a: 'La normativa establece que la capacitación está dirigida a todo el personal de la empresa: directivos, jefaturas de Recursos Humanos y nómina, personal administrativo, mandos medios y colaboradores operativos.'
+      a: 'La normativa establece que la capacitación está dirigida a todo el personal de la empresa (cobertura del 100%): directivos, jefaturas de Recursos Humanos y nómina, personal administrativo, mandos medios y colaboradores operativos.'
     },
     {
       q: '¿Qué entregables y certificados recibe la empresa para justificar ante el Ministerio del Trabajo?',
-      a: 'Entregamos: 1) Certificados individuales con código único y respaldo normativo para cada colaborador que aprueba el programa, 2) Informe ejecutivo consolidado de asistencia y cumplimiento para auditorías laborales, y 3) Plantillas prácticas para el diagnóstico salarial interno.'
+      a: 'Entregamos: 1) Certificados individuales con código único y respaldo normativo para cada colaborador que aprueba el programa con nota mínima de 70/100, 2) Informe técnico consolidado de gestión y asistencia LMS para auditorías laborales, y 3) Plantilla técnica formulada en Excel para la auditoría y diagnóstico de brecha salarial.'
     },
     {
       q: '¿Cómo se adapta la capacitación a los horarios y turnos de nuestra empresa?',
-      a: 'Ofrecemos modalidad virtual asincrónica 24/7 (donde cada colaborador avanza a su propio ritmo sin interrumpir la jornada de trabajo), sesiones virtuales sincrónicas en vivo con facilitadores expertos, o talleres in-company presenciales para comités y directivos.'
+      a: 'Implementamos el modelo de Aula Invertida (Blended Learning): e-learning autónomo en nuestra aula virtual accesible 24/7 sin detener la jornada laboral, podcasts formativos de sensibilización en cada módulo y sesiones de resolución de dudas con consultores legales senior.'
     }
   ];
 
   const modules = [
     {
       number: 'Módulo 1',
-      title: 'Marco Jurídico, Ley de Igualdad Salarial y Acuerdo MDT-2025-006',
-      desc: 'Fundamentos de la Ley Orgánica para la Igualdad Salarial, alcance del Acuerdo MDT-2025-006, convenios internacionales OIT (100 y 111), obligaciones patronales y consecuencias legales de la discriminación retributiva.'
+      weeks: 'Semanas 1 y 2 • 10 Horas',
+      title: 'Marco Legal, Derechos y Acuerdo MDT-2025-006',
+      objective: 'Comprender el marco normativo de igualdad salarial y el principio de igual remuneración por igual valor.',
+      desc: 'Fundamentos de la Ley Orgánica para la Igualdad Salarial entre Mujeres y Hombres, alcance vinculante del Acuerdo Ministerial MDT-2025-006, Convenios OIT 100 y 111, principios de igualdad retributiva y obligaciones patronales en los sectores público y privado.',
+      podcastTitle: 'Desigualdad salarial para las mujeres ecuatorianas por 100 dólares',
+      podcastUrl: 'https://www.youtube.com/watch?v=z8ygfO7tUvU'
     },
     {
       number: 'Módulo 2',
-      title: 'El Concepto Técnico-Legal de "Trabajo de Igual Valor"',
-      desc: 'Criterios objetivos para determinar el trabajo de igual valor: competencias requeridas, niveles de responsabilidad, esfuerzo físico y mental, y condiciones laborales, desvinculando la valoración de sesgos de género.'
+      weeks: 'Semanas 3 y 4 • 10 Horas',
+      title: 'Enfoque de Género y Desactivación de Sesgos Inconscientes',
+      objective: 'Reconocer estereotipos y sesgos inconscientes que afectan la equidad salarial y las oportunidades de ascenso.',
+      desc: 'Medición de la brecha salarial en el mercado laboral ecuatoriano, segregación horizontal y vertical (techo de cristal), sesgos inconscientes en procesos de selección, contratación y complementos salariales, y políticas de corresponsabilidad.',
+      podcastTitle: '¿Quién sirve el café?, una cuestión de género',
+      podcastUrl: 'https://www.youtube.com/watch?v=u-GNsy0z7U4'
     },
     {
       number: 'Módulo 3',
-      title: 'Metodología de Valoración Objetiva de Puestos de Trabajo',
-      desc: 'Herramientas cuantitativas y cualitativas para el análisis y descripción de perfiles de puesto, eliminación de sesgos inconscientes en escalas salariales y estandarización de bandas retributivas transparentes.'
+      weeks: 'Semanas 5 y 6 • 10 Horas',
+      title: 'Prevención de Violencia y Discriminación Laboral',
+      objective: 'Identificar conductas de acoso y discriminación aplicando los protocolos obligatorios de atención del MDT.',
+      desc: 'Tipificación de violencia laboral y acoso por razones de género conforme al Convenio 190 OIT, protocolos obligatorios del Ministerio del Trabajo, diseño de rutas de denuncia interna seguras, Comités de Ética y medidas de protección sin represalias.',
+      podcastTitle: 'Testimonios 8-M: "Sufrí discriminación laboral"',
+      podcastUrl: 'https://www.youtube.com/watch?v=ECJMTTsN6BM'
     },
     {
       number: 'Módulo 4',
-      title: 'Medición y Diagnóstico de la Brecha Salarial en la Organización',
-      desc: 'Cálculo técnico de la brecha salarial bruta y ajustada, análisis de complementos salariales, beneficios y variables, e identificación de brechas estructurales en las diferentes áreas de la empresa.'
+      weeks: 'Semanas 7 y 8 • 10 Horas',
+      title: 'Valoración Técnica de Puestos y Auditoría Salarial',
+      objective: 'Aplicar criterios técnicos objetivos para valorar puestos y asegurar transparencia retributiva.',
+      desc: 'El concepto técnico de "trabajo de igual valor", factores objetivos de valoración (competencias, esfuerzo, responsabilidad y condiciones), diseño de bandas salariales neutrales, matrices de diagnóstico de brecha y evaluación final (mín. 70/100).',
+      podcastTitle: 'Igualdad: No es evolución, es revolución',
+      podcastUrl: 'https://www.youtube.com/watch?v=3P-pXbqPt7w'
+    }
+  ];
+
+  const timelineSteps = [
+    {
+      step: '01',
+      title: 'Diagnóstico de Necesidades (DNC)',
+      desc: 'Evaluación del perfil de la organización, censo de colaboradores y mapeo de turnos para asegurar la participación del 100% de la nómina.',
+      tag: 'Fase Inicial'
     },
     {
-      number: 'Módulo 5',
-      title: 'Planes de Igualdad Salarial, Políticas y Medidas Correctoras',
-      desc: 'Diseño e implantación del Plan de Igualdad Salarial de la empresa, definición de acciones correctivas, protocolos de transparencia salarial y políticas de promociones y ascensos equitativos.'
+      step: '02',
+      title: 'Diseño Curricular & Cronograma (8 Semanas)',
+      desc: 'Planificación de la liberación progresiva de los 4 módulos técnicos (10h cada uno) adaptada al dinamismo y horarios de tu empresa.',
+      tag: 'Planificación'
     },
     {
-      number: 'Módulo 6',
-      title: 'Documentación, Auditoría y Reporte ante el Ministerio del Trabajo',
-      desc: 'Preparación de expedientes probatorios, actas de finalización de capacitación, registro en plataformas del MDT y pautas estratégicas para superar inspecciones laborales con cero observaciones.'
+      step: '03',
+      title: 'Ejecución en Aula Virtual LMS 24/7 (ERCA)',
+      desc: 'Aprendizaje autónomo interactivo, podcasts de sensibilización inicial, foros guiados y talleres sincrónicos con consultores laborales senior.',
+      tag: 'Formación Activa'
+    },
+    {
+      step: '04',
+      title: 'Certificación Oficial & Reporte para el MDT',
+      desc: 'Evaluación final con nota mínima de 70/100, emisión de certificados individuales con código único y entrega del informe técnico consolidado.',
+      tag: 'Blindaje Legal'
     }
   ];
 
@@ -108,15 +141,15 @@ export default function IgualdadSalarial({ onOpenContact }) {
                   <span className="spec-icon">⏳</span>
                   <div>
                     <strong>Duración: 40 horas</strong>
-                    <span>Carga reglamentaria obligatoria</span>
+                    <span>4 módulos • 8 semanas reglamentarias</span>
                   </div>
                 </div>
 
                 <div className="igualdad-spec-item">
                   <span className="spec-icon">👥</span>
                   <div>
-                    <strong>Dirigido a todo el personal</strong>
-                    <span>Directivos, mandos y operativos</span>
+                    <strong>Dirigido al 100% del personal</strong>
+                    <span>Directivos, mandos medios y operativos</span>
                   </div>
                 </div>
 
@@ -124,7 +157,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
                   <span className="spec-icon">🎯</span>
                   <div>
                     <strong>Equidad y marco legal</strong>
-                    <span>Promover la equidad salarial vigente</span>
+                    <span>Metodología de trabajo de igual valor</span>
                   </div>
                 </div>
 
@@ -132,7 +165,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
                   <span className="spec-icon">📜</span>
                   <div>
                     <strong>Certificado con respaldo</strong>
-                    <span>Validación para inspecciones MDT</span>
+                    <span>Validación para inspecciones MDT (&ge; 70/100)</span>
                   </div>
                 </div>
               </div>
@@ -154,6 +187,16 @@ export default function IgualdadSalarial({ onOpenContact }) {
                 >
                   Hablar por WhatsApp 💬
                 </a>
+
+                <a 
+                  href="https://aula.baluartalent.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn-secondary-glow btn-lg"
+                  style={{ background: 'rgba(255,255,255,0.08)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)', textDecoration: 'none' }}
+                >
+                  Ingresar al Aula Virtual 🎓
+                </a>
               </div>
             </div>
 
@@ -166,7 +209,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
                   className="hero-card-img"
                 />
                 <div className="hero-card-badge-overlay">
-                  <span>🏢 Programa Corporativo In-Company &amp; Virtual</span>
+                  <span>🏢 Programa Corporativo In-Company &amp; Virtual B2B</span>
                 </div>
               </div>
 
@@ -183,9 +226,10 @@ export default function IgualdadSalarial({ onOpenContact }) {
 
                 <ul className="hero-card-checkpoints">
                   <li>✔ Respaldo normativo oficial MDT-2025-006</li>
-                  <li>✔ Modalidad 100% adaptable a turnos de tu empresa</li>
+                  <li>✔ Metodología blended learning ERCA 24/7</li>
+                  <li>✔ Podcasts formativos de sensibilización incluidos</li>
                   <li>✔ Informe consolidado de avance para RRHH</li>
-                  <li>✔ Plantilla de diagnóstico de brecha salarial incluida</li>
+                  <li>✔ Plantilla técnica de auditoría de brecha salarial</li>
                 </ul>
 
                 <button 
@@ -252,23 +296,50 @@ export default function IgualdadSalarial({ onOpenContact }) {
         </div>
       </section>
 
-      {/* 3. SECCIÓN: TEMARIO COMPLETO (40 HORAS ACADÉMICAS) */}
+      {/* 3. SECCIÓN: TEMARIO COMPLETO (40 HORAS ACADÉMICAS EN 4 MÓDULOS) */}
       <section className="section-padding">
         <div className="container">
           <div className="section-title text-center">
-            <span className="subtitle">PLAN FORMATIVO REGLAMENTARIO</span>
+            <span className="subtitle">PLAN FORMATIVO REGLAMENTARIO • 8 SEMANAS</span>
             <h2>Contenido Académico y Estructura del Programa (40 Horas)</h2>
-            <p className="section-desc" style={{ maxWidth: '780px', textAlign: 'left', margin: '0 0 1.5rem 0' }}>
+            <p className="section-desc" style={{ maxWidth: '820px', textAlign: 'left', margin: '0 0 1.5rem 0' }}>
               Un programa diseñado por especialistas en derecho laboral, remuneraciones y desarrollo organizacional, asegurando aplicabilidad práctica y total apego a las disposiciones del Ministerio del Trabajo.
             </p>
           </div>
 
-          <div className="modules-grid-list">
+          <div className="modules-grid-list" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
             {modules.map((m, index) => (
-              <div key={index} className="module-item-card">
-                <div className="module-item-badge">{m.number}</div>
+              <div key={index} className="module-item-card" style={{ display: 'flex', flexDirection: 'column' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                  <div className="module-item-badge">{m.number}</div>
+                  <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--secondary)', background: 'rgba(13, 148, 136, 0.08)', padding: '0.2rem 0.6rem', borderRadius: '50px' }}>
+                    {m.weeks}
+                  </span>
+                </div>
                 <h3 className="module-item-title">{m.title}</h3>
-                <p className="module-item-desc">{m.desc}</p>
+                <div style={{ background: '#f8fafc', borderLeft: '3px solid var(--primary)', padding: '0.6rem 0.8rem', borderRadius: '0 8px 8px 0', marginBottom: '0.9rem' }}>
+                  <strong style={{ fontSize: '0.8rem', color: 'var(--primary)', display: 'block' }}>🎯 Objetivo Pedagógico:</strong>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-main)' }}>{m.objective}</span>
+                </div>
+                <p className="module-item-desc" style={{ flexGrow: 1, marginBottom: '1.2rem' }}>{m.desc}</p>
+                
+                {/* Podcast highlight */}
+                <div style={{ background: 'rgba(239, 68, 68, 0.06)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '10px', padding: '0.75rem 0.9rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.8rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', overflow: 'hidden' }}>
+                    <span style={{ fontSize: '1.1rem' }}>🎧</span>
+                    <span style={{ fontSize: '0.76rem', fontWeight: 600, color: '#991b1b', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                      {m.podcastTitle}
+                    </span>
+                  </div>
+                  <a 
+                    href={m.podcastUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{ fontSize: '0.74rem', fontWeight: 700, color: '#dc2626', textDecoration: 'none', whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}
+                  >
+                    Ver &rarr;
+                  </a>
+                </div>
               </div>
             ))}
           </div>
@@ -276,9 +347,9 @@ export default function IgualdadSalarial({ onOpenContact }) {
           {/* Banner de llamada dentro de la sección */}
           <div className="temario-callout-box">
             <div className="callout-content">
-              <h3>¿Necesitas adaptar el temario al sector o estructura de tu empresa?</h3>
+              <h3>¿Necesitas adaptar el cronograma a los turnos de tu empresa?</h3>
               <p>
-                Diseñamos cronogramas específicos por turnos, departamentos o modalidad para optimizar el tiempo de tus colaboradores.
+                Diseñamos cronogramas específicos por turnos, departamentos o modalidad virtual asincrónica 24/7 para optimizar el tiempo de tus colaboradores sin interrumpir la operación.
               </p>
             </div>
             <button className="nav-cta-btn" onClick={onOpenContact}>
@@ -288,7 +359,102 @@ export default function IgualdadSalarial({ onOpenContact }) {
         </div>
       </section>
 
-      {/* 4. MODALIDADES DE IMPLEMENTACIÓN B2B */}
+      {/* 4. COMPONENTE DE SENSIBILIZACIÓN: PODCASTS FORMATIVOS */}
+      <section className="section-padding bg-alt-light">
+        <div className="container">
+          <div className="section-title text-center">
+            <span className="subtitle">COMPONENTE DE SENSIBILIZACIÓN &bull; FORMATO AUDIOVISUAL</span>
+            <h2>Podcasts Formativos de Alto Impacto</h2>
+            <p className="section-desc" style={{ maxWidth: '820px', textAlign: 'left', margin: '0 0 1.5rem 0' }}>
+              Cada módulo del programa inicia de forma obligatoria con un podcast formativo diseñado para empatizar, contextualizar la problemática real de la brecha salarial y motivar la participación activa de los colaboradores.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', marginTop: '2.5rem' }}>
+            {modules.map((m, idx) => (
+              <div key={idx} style={{ background: '#ffffff', border: '1px solid var(--border-light)', borderRadius: '18px', padding: '1.6rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 18px rgba(15, 23, 42, 0.05)', transition: 'transform 0.25s ease' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                  <span style={{ background: '#fee2e2', color: '#dc2626', fontSize: '0.72rem', fontWeight: 800, padding: '0.25rem 0.65rem', borderRadius: '50px' }}>
+                    Episodio 0{idx + 1}
+                  </span>
+                  <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>{m.number}</span>
+                </div>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-heading)', marginBottom: '0.6rem', lineHeight: '1.35' }}>
+                  {m.podcastTitle}
+                </h3>
+                <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', lineHeight: '1.55', flexGrow: 1, marginBottom: '1.4rem' }}>
+                  Material auditivo formativo orientado a desarticular estereotipos, sensibilizar en igualdad retributiva y vincular la experiencia cotidiana con la normativa MDT.
+                </p>
+                <a 
+                  href={m.podcastUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ background: '#dc2626', color: '#ffffff', textDecoration: 'none', padding: '0.7rem 1.2rem', borderRadius: '50px', fontSize: '0.82rem', fontWeight: 700, textAlign: 'center', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', boxShadow: '0 4px 12px rgba(220, 38, 38, 0.25)' }}
+                >
+                  ▶️ Escuchar Podcast en YouTube
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. METODOLOGÍA & TIMELINE DE APRENDIZAJE (ERCA + BLENDED) */}
+      <section className="section-padding">
+        <div className="container">
+          <div className="section-title text-center">
+            <span className="subtitle">METODOLOGÍA PEDAGÓGICA ERCA &bull; BLENDED LEARNING</span>
+            <h2>Plan de Implementación y Acompañamiento Corporativo</h2>
+            <p className="section-desc" style={{ maxWidth: '820px', textAlign: 'left', margin: '0 0 1.5rem 0' }}>
+              Implementamos el modelo de Aula Invertida optimizado mediante la metodología pedagógica ERCA (Experiencia, Reflexión, Conceptualización y Aplicación), asegurando aplicabilidad práctica sin fricciones en la jornada laboral.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', marginTop: '2.5rem' }}>
+            {timelineSteps.map((t, index) => (
+              <div key={index} style={{ background: '#ffffff', border: '1px solid var(--border-light)', borderRadius: '18px', padding: '2rem 1.6rem', position: 'relative', boxShadow: '0 4px 18px rgba(15, 23, 42, 0.05)' }}>
+                <span style={{ fontSize: '2.2rem', fontWeight: 900, color: 'rgba(30, 64, 175, 0.15)', position: 'absolute', top: '1rem', right: '1.2rem', fontFamily: 'var(--font-heading)' }}>
+                  {t.step}
+                </span>
+                <span style={{ background: 'rgba(13, 148, 136, 0.08)', color: 'var(--secondary)', fontSize: '0.72rem', fontWeight: 800, padding: '0.25rem 0.65rem', borderRadius: '50px', display: 'inline-block', marginBottom: '0.9rem' }}>
+                  {t.tag}
+                </span>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-heading)', marginBottom: '0.6rem' }}>
+                  {t.title}
+                </h3>
+                <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
+                  {t.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Banner de Acceso al Aula Virtual LMS */}
+          <div style={{ marginTop: '3rem', background: 'linear-gradient(135deg, #09132b 0%, #0d9488 100%)', borderRadius: '20px', padding: '2.4rem 2.8rem', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.8rem', boxShadow: '0 16px 40px rgba(9, 19, 43, 0.3)' }}>
+            <div style={{ maxWidth: '650px' }}>
+              <span style={{ background: '#38bdf8', color: '#09132b', fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', padding: '0.25rem 0.75rem', borderRadius: '50px', letterSpacing: '0.04em', display: 'inline-block', marginBottom: '0.6rem' }}>
+                AULA VIRTUAL LMS DISPONIBLE 24/7
+              </span>
+              <h3 style={{ fontSize: '1.45rem', fontWeight: 800, margin: '0 0 0.5rem 0', color: '#ffffff' }}>
+                Entorno Digital de Aprendizaje BALUARTALENT
+              </h3>
+              <p style={{ fontSize: '0.92rem', color: 'rgba(255,255,255,0.9)', margin: 0, lineHeight: '1.6' }}>
+                Tus colaboradores ingresan con credenciales individuales a nuestra plataforma Moodle de alta disponibilidad, con seguimiento en tiempo real para la gerencia de Talento Humano.
+              </p>
+            </div>
+            <a 
+              href="https://aula.baluartalent.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ background: '#ffffff', color: '#09132b', textDecoration: 'none', padding: '0.9rem 1.8rem', borderRadius: '50px', fontWeight: 800, fontSize: '0.92rem', boxShadow: '0 4px 15px rgba(0,0,0,0.2)', whiteSpace: 'nowrap' }}
+            >
+              🚀 Acceder al Aula Virtual
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. MODALIDADES DE IMPLEMENTACIÓN B2B */}
       <section className="section-padding bg-alt-light">
         <div className="container">
           <div className="section-title text-center">
@@ -342,47 +508,66 @@ export default function IgualdadSalarial({ onOpenContact }) {
         </div>
       </section>
 
-      {/* 5. ENTREGABLES Y BENEFICIOS PARA LA EMPRESA */}
+      {/* 7. ENTREGABLES Y BENEFICIOS PARA LA EMPRESA */}
       <section className="section-padding">
         <div className="container">
           <div className="deliverables-wrapper">
             <div className="deliverables-content">
-              <span className="subtitle">RESPALDO TOTAL BALUARTALENT</span>
-              <h2>¿Qué recibe tu empresa al finalizar la capacitación?</h2>
-              <p>
+              <span className="subtitle">EVIDENCIAS AUDITABLES BALUARTALENT</span>
+              <h2>Alcance del Servicio y Entregables Corporativos</h2>
+              <p style={{ textAlign: 'left', marginBottom: '1.8rem' }}>
                 Garantizamos que la carpeta de talento humano cuente con toda la documentación probatoria requerida ante inspecciones del Ministerio del Trabajo:
               </p>
 
               <div className="deliverables-list">
-                <div className="deliverable-row">
-                  <div className="deliv-icon">🎓</div>
-                  <div>
-                    <strong>Certificados Individuales con Respaldo Normativo</strong>
-                    <p>Con código único de validación digital para el 100% de colaboradores aprobados, acreditando las 40 horas académicas.</p>
+                <div style={{ marginBottom: '1.2rem' }}>
+                  <h4 style={{ color: 'var(--primary)', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.8rem' }}>
+                    🏢 Para la Organización (Empresa):
+                  </h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
+                    <div className="deliverable-row">
+                      <div className="deliv-icon">📋</div>
+                      <div>
+                        <strong>Informe Técnico de Gestión e Impacto</strong>
+                        <p>Documento ejecutivo institucional con lista de participantes, calificaciones, porcentaje de cobertura y firmas de facilitadores.</p>
+                      </div>
+                    </div>
+                    <div className="deliverable-row">
+                      <div className="deliv-icon">📊</div>
+                      <div>
+                        <strong>Registro Consolidado de Asistencia y Conexión</strong>
+                        <p>Reporte técnico detallado con registros automatizados de login mediante la plataforma LMS que certifica las 40 horas completadas.</p>
+                      </div>
+                    </div>
+                    <div className="deliverable-row">
+                      <div className="deliv-icon">📐</div>
+                      <div>
+                        <strong>Matriz de Calificaciones y Herramientas Técnicas</strong>
+                        <p>Base de datos auditable con notas (&ge; 70/100) y copias de las plantillas de auditoría salarial básica desarrolladas durante el programa.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="deliverable-row">
-                  <div className="deliv-icon">📋</div>
-                  <div>
-                    <strong>Informe Consolidado de Cumplimiento para el MDT</strong>
-                    <p>Documento ejecutivo institucional con lista de participantes, calificaciones, porcentaje de cobertura y firmas de facilitadores.</p>
-                  </div>
-                </div>
-
-                <div className="deliverable-row">
-                  <div className="deliv-icon">📐</div>
-                  <div>
-                    <strong>Plantilla de Diagnóstico y Matriz de Brecha Salarial</strong>
-                    <p>Plantilla técnica en Excel formulada para que tu equipo de Recursos Humanos pueda realizar la medición interna de equidad salarial.</p>
-                  </div>
-                </div>
-
-                <div className="deliverable-row">
-                  <div className="deliv-icon">🛡️</div>
-                  <div>
-                    <strong>Acompañamiento y Asesoría Técnica</strong>
-                    <p>Soporte de nuestro equipo legal y consultor ante dudas sobre el registro de evidencias en las plataformas del Ministerio del Trabajo.</p>
+                <div>
+                  <h4 style={{ color: 'var(--secondary)', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.8rem' }}>
+                    🎓 Para los Colaboradores (Participantes):
+                  </h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
+                    <div className="deliverable-row">
+                      <div className="deliv-icon">📜</div>
+                      <div>
+                        <strong>Certificados Individuales con Respaldo Normativo</strong>
+                        <p>Con código único de validación digital para el 100% de colaboradores aprobados, acreditando las 40 horas académicas bajo el Acuerdo MDT-2025-006.</p>
+                      </div>
+                    </div>
+                    <div className="deliverable-row">
+                      <div className="deliv-icon">📖</div>
+                      <div>
+                        <strong>Manual Digital del Participante</strong>
+                        <p>Compendio descargable en PDF con fundamentos legales, metodologías y guías de bolsillo sobre canales de denuncia e infografías.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -405,6 +590,10 @@ export default function IgualdadSalarial({ onOpenContact }) {
                     <span>Personal</span>
                   </div>
                   <div className="stat-pill">
+                    <strong>70/100</strong>
+                    <span>Nota Mín.</span>
+                  </div>
+                  <div className="stat-pill">
                     <strong>30 Nov</strong>
                     <span>Plazo Límite</span>
                   </div>
@@ -415,43 +604,43 @@ export default function IgualdadSalarial({ onOpenContact }) {
         </div>
       </section>
 
-      {/* 6. PREGUNTAS FRECUENTES (FAQ NORMATIVO) */}
+      {/* 8. PREGUNTAS FRECUENTES (FAQ) */}
       <section className="section-padding bg-alt-light">
-        <div className="container" style={{ maxWidth: '920px' }}>
+        <div className="container" style={{ maxWidth: '900px' }}>
           <div className="section-title text-center">
             <span className="subtitle">RESOLUCIÓN DE DUDAS FRECUENTES</span>
-            <h2>Preguntas Frecuentes sobre la Normativa de Igualdad Salarial</h2>
+            <h2>Preguntas Frecuentes sobre la Capacitación Obligatoria</h2>
             <p className="section-desc">
-              Todo lo que gerentes de RRHH y directores de empresa deben saber para cumplir a tiempo.
+              Todo lo que el área de Talento Humano y Gerencia Legal debe saber para cumplir con la auditoría del MDT.
             </p>
           </div>
 
           <div className="faq-accordion-list">
-            {faqs.map((faq, index) => (
-              <div 
-                key={index} 
-                className={`faq-accordion-item ${openFaq === index ? 'open' : ''}`}
-              >
-                <button 
-                  className="faq-question-btn"
-                  onClick={() => toggleFaq(index)}
-                  aria-expanded={openFaq === index}
-                >
-                  <span className="faq-q-text">{faq.q}</span>
-                  <span className="faq-icon-arrow">{openFaq === index ? '−' : '+'}</span>
-                </button>
-                {openFaq === index && (
-                  <div className="faq-answer-pane animate-fade-in">
-                    <p>{faq.a}</p>
-                  </div>
-                )}
-              </div>
-            ))}
+            {faqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <div key={index} className={`faq-accordion-item ${isOpen ? 'open' : ''}`}>
+                  <button 
+                    className="faq-question-btn" 
+                    onClick={() => toggleFaq(index)}
+                    aria-expanded={isOpen}
+                  >
+                    <span>{faq.q}</span>
+                    <span className="faq-icon-arrow">{isOpen ? '−' : '+'}</span>
+                  </button>
+                  {isOpen && (
+                    <div className="faq-answer-pane">
+                      <p>{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 7. CTA BANNER FINAL B2B */}
+      {/* 9. CTA BANNER FINAL B2B */}
       <section className="section-padding igualdad-final-cta-section">
         <div className="container">
           <div className="igualdad-cta-box">

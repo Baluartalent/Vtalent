@@ -34,7 +34,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
     },
     {
       q: '¿Cómo se adapta la capacitación a los horarios y turnos de nuestra empresa?',
-      a: 'Implementamos el modelo de Aula Invertida (Blended Learning): e-learning autónomo en nuestra aula virtual accesible 24/7 sin detener la jornada laboral, podcasts formativos de sensibilización en cada módulo y sesiones de resolución de dudas con consultores legales senior.'
+      a: 'Implementamos el modelo de Aula Invertida (Blended Learning): e-learning autónomo en nuestra aula virtual accesible 24/7 sin detener la jornada laboral, análisis de casos prácticos y sesiones de resolución de dudas con consultores legales senior.'
     }
   ];
 
@@ -44,36 +44,28 @@ export default function IgualdadSalarial({ onOpenContact }) {
       weeks: 'Semanas 1 y 2 • 10 Horas',
       title: 'Marco Legal, Derechos y Acuerdo MDT-2025-006',
       objective: 'Comprender el marco normativo de igualdad salarial y el principio de igual remuneración por igual valor.',
-      desc: 'Fundamentos de la Ley Orgánica para la Igualdad Salarial entre Mujeres y Hombres, alcance vinculante del Acuerdo Ministerial MDT-2025-006, Convenios OIT 100 y 111, principios de igualdad retributiva y obligaciones patronales en los sectores público y privado.',
-      podcastTitle: 'Desigualdad salarial para las mujeres ecuatorianas por 100 dólares',
-      podcastUrl: 'https://www.youtube.com/watch?v=z8ygfO7tUvU'
+      desc: 'Fundamentos de la Ley Orgánica para la Igualdad Salarial entre Mujeres y Hombres, alcance vinculante del Acuerdo Ministerial MDT-2025-006, Convenios OIT 100 y 111, principios de igualdad retributiva y obligaciones patronales en los sectores público y privado.'
     },
     {
       number: 'Módulo 2',
       weeks: 'Semanas 3 y 4 • 10 Horas',
       title: 'Enfoque de Género y Desactivación de Sesgos Inconscientes',
       objective: 'Reconocer estereotipos y sesgos inconscientes que afectan la equidad salarial y las oportunidades de ascenso.',
-      desc: 'Medición de la brecha salarial en el mercado laboral ecuatoriano, segregación horizontal y vertical (techo de cristal), sesgos inconscientes en procesos de selección, contratación y complementos salariales, y políticas de corresponsabilidad.',
-      podcastTitle: '¿Quién sirve el café?, una cuestión de género',
-      podcastUrl: 'https://www.youtube.com/watch?v=u-GNsy0z7U4'
+      desc: 'Medición de la brecha salarial en el mercado laboral ecuatoriano, segregación horizontal y vertical (techo de cristal), sesgos inconscientes en procesos de selección, contratación y complementos salariales, y políticas de corresponsabilidad.'
     },
     {
       number: 'Módulo 3',
       weeks: 'Semanas 5 y 6 • 10 Horas',
       title: 'Prevención de Violencia y Discriminación Laboral',
       objective: 'Identificar conductas de acoso y discriminación aplicando los protocolos obligatorios de atención del MDT.',
-      desc: 'Tipificación de violencia laboral y acoso por razones de género conforme al Convenio 190 OIT, protocolos obligatorios del Ministerio del Trabajo, diseño de rutas de denuncia interna seguras, Comités de Ética y medidas de protección sin represalias.',
-      podcastTitle: 'Testimonios 8-M: "Sufrí discriminación laboral"',
-      podcastUrl: 'https://www.youtube.com/watch?v=ECJMTTsN6BM'
+      desc: 'Tipificación de violencia laboral y acoso por razones de género conforme al Convenio 190 OIT, protocolos obligatorios del Ministerio del Trabajo, diseño de rutas de denuncia interna seguras, Comités de Ética y medidas de protección sin represalias.'
     },
     {
       number: 'Módulo 4',
       weeks: 'Semanas 7 y 8 • 10 Horas',
       title: 'Valoración Técnica de Puestos y Auditoría Salarial',
       objective: 'Aplicar criterios técnicos objetivos para valorar puestos y asegurar transparencia retributiva.',
-      desc: 'El concepto técnico de "trabajo de igual valor", factores objetivos de valoración (competencias, esfuerzo, responsabilidad y condiciones), diseño de bandas salariales neutrales, matrices de diagnóstico de brecha y evaluación final (mín. 70/100).',
-      podcastTitle: 'Igualdad: No es evolución, es revolución',
-      podcastUrl: 'https://www.youtube.com/watch?v=3P-pXbqPt7w'
+      desc: 'El concepto técnico de "trabajo de igual valor", factores objetivos de valoración (competencias, esfuerzo, responsabilidad y condiciones), diseño de bandas salariales neutrales, matrices de diagnóstico de brecha y evaluación final (mín. 70/100).'
     }
   ];
 
@@ -93,7 +85,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
     {
       step: '03',
       title: 'Ejecución en Aula Virtual LMS 24/7 (ERCA)',
-      desc: 'Aprendizaje autónomo interactivo, podcasts de sensibilización inicial, foros guiados y talleres sincrónicos con consultores laborales senior.',
+      desc: 'Aprendizaje autónomo interactivo, foros guiados, análisis de casos prácticos y talleres sincrónicos con consultores laborales senior.',
       tag: 'Formación Activa'
     },
     {
@@ -227,7 +219,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
                 <ul className="hero-card-checkpoints">
                   <li>✔ Respaldo normativo oficial MDT-2025-006</li>
                   <li>✔ Metodología blended learning ERCA 24/7</li>
-                  <li>✔ Podcasts formativos de sensibilización incluidos</li>
+                  <li>✔ Casos prácticos y diagnóstico sectorial</li>
                   <li>✔ Informe consolidado de avance para RRHH</li>
                   <li>✔ Plantilla técnica de auditoría de brecha salarial</li>
                 </ul>
@@ -321,25 +313,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
                   <strong style={{ fontSize: '0.8rem', color: 'var(--primary)', display: 'block' }}>🎯 Objetivo Pedagógico:</strong>
                   <span style={{ fontSize: '0.8rem', color: 'var(--text-main)' }}>{m.objective}</span>
                 </div>
-                <p className="module-item-desc" style={{ flexGrow: 1, marginBottom: '1.2rem' }}>{m.desc}</p>
-                
-                {/* Podcast highlight */}
-                <div style={{ background: 'rgba(239, 68, 68, 0.06)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '10px', padding: '0.75rem 0.9rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.8rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', overflow: 'hidden' }}>
-                    <span style={{ fontSize: '1.1rem' }}>🎧</span>
-                    <span style={{ fontSize: '0.76rem', fontWeight: 600, color: '#991b1b', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                      {m.podcastTitle}
-                    </span>
-                  </div>
-                  <a 
-                    href={m.podcastUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    style={{ fontSize: '0.74rem', fontWeight: 700, color: '#dc2626', textDecoration: 'none', whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}
-                  >
-                    Ver &rarr;
-                  </a>
-                </div>
+                <p className="module-item-desc" style={{ margin: 0 }}>{m.desc}</p>
               </div>
             ))}
           </div>
@@ -359,48 +333,8 @@ export default function IgualdadSalarial({ onOpenContact }) {
         </div>
       </section>
 
-      {/* 4. COMPONENTE DE SENSIBILIZACIÓN: PODCASTS FORMATIVOS */}
+      {/* 4. METODOLOGÍA & TIMELINE DE APRENDIZAJE (ERCA + BLENDED) */}
       <section className="section-padding bg-alt-light">
-        <div className="container">
-          <div className="section-title text-center">
-            <span className="subtitle">COMPONENTE DE SENSIBILIZACIÓN &bull; FORMATO AUDIOVISUAL</span>
-            <h2>Podcasts Formativos de Alto Impacto</h2>
-            <p className="section-desc" style={{ maxWidth: '820px', textAlign: 'left', margin: '0 0 1.5rem 0' }}>
-              Cada módulo del programa inicia de forma obligatoria con un podcast formativo diseñado para empatizar, contextualizar la problemática real de la brecha salarial y motivar la participación activa de los colaboradores.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', marginTop: '2.5rem' }}>
-            {modules.map((m, idx) => (
-              <div key={idx} style={{ background: '#ffffff', border: '1px solid var(--border-light)', borderRadius: '18px', padding: '1.6rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 18px rgba(15, 23, 42, 0.05)', transition: 'transform 0.25s ease' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                  <span style={{ background: '#fee2e2', color: '#dc2626', fontSize: '0.72rem', fontWeight: 800, padding: '0.25rem 0.65rem', borderRadius: '50px' }}>
-                    Episodio 0{idx + 1}
-                  </span>
-                  <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>{m.number}</span>
-                </div>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-heading)', marginBottom: '0.6rem', lineHeight: '1.35' }}>
-                  {m.podcastTitle}
-                </h3>
-                <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', lineHeight: '1.55', flexGrow: 1, marginBottom: '1.4rem' }}>
-                  Material auditivo formativo orientado a desarticular estereotipos, sensibilizar en igualdad retributiva y vincular la experiencia cotidiana con la normativa MDT.
-                </p>
-                <a 
-                  href={m.podcastUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{ background: '#dc2626', color: '#ffffff', textDecoration: 'none', padding: '0.7rem 1.2rem', borderRadius: '50px', fontSize: '0.82rem', fontWeight: 700, textAlign: 'center', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', boxShadow: '0 4px 12px rgba(220, 38, 38, 0.25)' }}
-                >
-                  ▶️ Escuchar Podcast en YouTube
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. METODOLOGÍA & TIMELINE DE APRENDIZAJE (ERCA + BLENDED) */}
-      <section className="section-padding">
         <div className="container">
           <div className="section-title text-center">
             <span className="subtitle">METODOLOGÍA PEDAGÓGICA ERCA &bull; BLENDED LEARNING</span>
@@ -454,8 +388,8 @@ export default function IgualdadSalarial({ onOpenContact }) {
         </div>
       </section>
 
-      {/* 6. MODALIDADES DE IMPLEMENTACIÓN B2B */}
-      <section className="section-padding bg-alt-light">
+      {/* 5. MODALIDADES DE IMPLEMENTACIÓN B2B */}
+      <section className="section-padding">
         <div className="container">
           <div className="section-title text-center">
             <span className="subtitle">MODALIDADES B2B FLEXIBLES</span>
@@ -508,8 +442,8 @@ export default function IgualdadSalarial({ onOpenContact }) {
         </div>
       </section>
 
-      {/* 7. ENTREGABLES Y BENEFICIOS PARA LA EMPRESA */}
-      <section className="section-padding">
+      {/* 6. ENTREGABLES Y BENEFICIOS PARA LA EMPRESA */}
+      <section className="section-padding bg-alt-light">
         <div className="container">
           <div className="deliverables-wrapper">
             <div className="deliverables-content">
@@ -604,8 +538,8 @@ export default function IgualdadSalarial({ onOpenContact }) {
         </div>
       </section>
 
-      {/* 8. PREGUNTAS FRECUENTES (FAQ) */}
-      <section className="section-padding bg-alt-light">
+      {/* 7. PREGUNTAS FRECUENTES (FAQ) */}
+      <section className="section-padding">
         <div className="container" style={{ maxWidth: '900px' }}>
           <div className="section-title text-center">
             <span className="subtitle">RESOLUCIÓN DE DUDAS FRECUENTES</span>
@@ -640,7 +574,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
         </div>
       </section>
 
-      {/* 9. CTA BANNER FINAL B2B */}
+      {/* 8. CTA BANNER FINAL B2B */}
       <section className="section-padding igualdad-final-cta-section">
         <div className="container">
           <div className="igualdad-cta-box">

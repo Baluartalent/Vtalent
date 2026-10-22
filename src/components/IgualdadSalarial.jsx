@@ -41,28 +41,24 @@ export default function IgualdadSalarial({ onOpenContact }) {
   const modules = [
     {
       number: 'Módulo 1',
-      weeks: 'Semanas 1 y 2 • 10 Horas',
       title: 'Marco Legal, Derechos y Acuerdo MDT-2025-006',
       objective: 'Comprender el marco normativo de igualdad salarial y el principio de igual remuneración por igual valor.',
       desc: 'Fundamentos de la Ley Orgánica para la Igualdad Salarial entre Mujeres y Hombres, alcance vinculante del Acuerdo Ministerial MDT-2025-006, Convenios OIT 100 y 111, principios de igualdad retributiva y obligaciones patronales en los sectores público y privado.'
     },
     {
       number: 'Módulo 2',
-      weeks: 'Semanas 3 y 4 • 10 Horas',
       title: 'Enfoque de Género y Desactivación de Sesgos Inconscientes',
       objective: 'Reconocer estereotipos y sesgos inconscientes que afectan la equidad salarial y las oportunidades de ascenso.',
       desc: 'Medición de la brecha salarial en el mercado laboral ecuatoriano, segregación horizontal y vertical (techo de cristal), sesgos inconscientes en procesos de selección, contratación y complementos salariales, y políticas de corresponsabilidad.'
     },
     {
       number: 'Módulo 3',
-      weeks: 'Semanas 5 y 6 • 10 Horas',
       title: 'Prevención de Violencia y Discriminación Laboral',
       objective: 'Identificar conductas de acoso y discriminación aplicando los protocolos obligatorios de atención del MDT.',
       desc: 'Tipificación de violencia laboral y acoso por razones de género conforme al Convenio 190 OIT, protocolos obligatorios del Ministerio del Trabajo, diseño de rutas de denuncia interna seguras, Comités de Ética y medidas de protección sin represalias.'
     },
     {
       number: 'Módulo 4',
-      weeks: 'Semanas 7 y 8 • 10 Horas',
       title: 'Valoración Técnica de Puestos y Auditoría Salarial',
       objective: 'Aplicar criterios técnicos objetivos para valorar puestos y asegurar transparencia retributiva.',
       desc: 'El concepto técnico de "trabajo de igual valor", factores objetivos de valoración (competencias, esfuerzo, responsabilidad y condiciones), diseño de bandas salariales neutrales, matrices de diagnóstico de brecha y evaluación final (mín. 70/100).'
@@ -302,11 +298,8 @@ export default function IgualdadSalarial({ onOpenContact }) {
           <div className="modules-grid-list" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
             {modules.map((m, index) => (
               <div key={index} className="module-item-card" style={{ display: 'flex', flexDirection: 'column' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                <div style={{ marginBottom: '1rem' }}>
                   <div className="module-item-badge">{m.number}</div>
-                  <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--secondary)', background: 'rgba(13, 148, 136, 0.08)', padding: '0.2rem 0.6rem', borderRadius: '50px' }}>
-                    {m.weeks}
-                  </span>
                 </div>
                 <h3 className="module-item-title">{m.title}</h3>
                 <div style={{ background: '#f8fafc', borderLeft: '3px solid var(--primary)', padding: '0.6rem 0.8rem', borderRadius: '0 8px 8px 0', marginBottom: '0.9rem' }}>

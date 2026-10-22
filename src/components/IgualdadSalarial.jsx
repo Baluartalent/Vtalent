@@ -74,7 +74,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
     },
     {
       step: '02',
-      title: 'Diseño Curricular & Cronograma (8 Semanas)',
+      title: 'Diseño Curricular & Cronograma',
       desc: 'Planificación de la liberación progresiva de los 4 módulos técnicos (10h cada uno) adaptada al dinamismo y horarios de tu empresa.',
       tag: 'Planificación'
     },
@@ -129,7 +129,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
                   <span className="spec-icon">⏳</span>
                   <div>
                     <strong>Duración: 40 horas</strong>
-                    <span>4 módulos • 8 semanas reglamentarias</span>
+                    <span>4 módulos reglamentarios</span>
                   </div>
                 </div>
 
@@ -176,15 +176,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
                   Hablar por WhatsApp 💬
                 </a>
 
-                <a 
-                  href="https://aula.baluartalent.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn-secondary-glow btn-lg"
-                  style={{ background: 'rgba(255,255,255,0.08)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)', textDecoration: 'none' }}
-                >
-                  Ingresar al Aula Virtual 🎓
-                </a>
+
               </div>
             </div>
 
@@ -288,7 +280,7 @@ export default function IgualdadSalarial({ onOpenContact }) {
       <section className="section-padding">
         <div className="container">
           <div className="section-title text-center">
-            <span className="subtitle">PLAN FORMATIVO REGLAMENTARIO • 8 SEMANAS</span>
+            <span className="subtitle">PLAN FORMATIVO REGLAMENTARIO</span>
             <h2>Contenido Académico y Estructura del Programa (40 Horas)</h2>
             <p className="section-desc" style={{ maxWidth: '820px', textAlign: 'left', margin: '0 0 1.5rem 0' }}>
               Un programa diseñado por especialistas en derecho laboral, remuneraciones y desarrollo organizacional, asegurando aplicabilidad práctica y total apego a las disposiciones del Ministerio del Trabajo.

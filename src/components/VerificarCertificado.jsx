@@ -1,83 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import { fetchLiveCertificates } from '../services/certificateService';
+import React, { useState, useEffect, useCallback } from 'react';
+import { verifyCertificateByCode } from '../services/certificateService';
 
 export default function VerificarCertificado({ onOpenContact }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
   const [selectedResult, setSelectedResult] = useState(null);
   const [hasSearched, setHasSearched] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [notFoundMessage, setNotFoundMessage] = useState('');
+  const [networkError, setNetworkError] = useState('');
   const [copiedLink, setCopiedLink] = useState(false);
 
-  const normalizeStr = (str) => {
-    return (str || '').toString().trim().toLowerCase().replace(/[^a-z0-9]/g, '');
-  };
-
-  const isCodeMatch = (certCode, query) => {
-    const normCert = normalizeStr(certCode);
-    const normQuery = normalizeStr(query);
-    if (!normCert || !normQuery) return false;
-
-    // 1. Coincidencia exacta con el código largo oficial (ej. REG-BAL-2026-EC-0003)
-    if (normCert === normQuery) return true;
-
-    // 2. Coincidencia con código corto oficial del QR (debe incluir el prefijo 'regbal' o 'bal' y el secuencial de 4 dígitos)
-    const certDigits = normCert.replace(/\D/g, '');
-    const queryDigits = normQuery.replace(/\D/g, '');
-
-    const queryHasPrefix = normQuery.startsWith('regbal') || normQuery.startsWith('bal');
-    const certHasPrefix = normCert.startsWith('regbal') || normCert.startsWith('bal');
-
-    if (queryHasPrefix && certHasPrefix && queryDigits.length >= 4) {
-      if (certDigits.endsWith(queryDigits)) {
-        return true;
-      }
-    }
-
-    return false;
-  };
-
-  const executeSearch = async (query) => {
-    const cleanQuery = normalizeStr(query);
+  const executeSearch = useCallback(async (query) => {
+    const cleanQuery = (query || '').trim();
     if (!cleanQuery) {
-      setSearchResults([]);
       setSelectedResult(null);
       setHasSearched(false);
+      setNotFoundMessage('');
+      setNetworkError('');
       return;
     }
 
     setIsLoading(true);
-    try {
-      const certificates = await fetchLiveCertificates();
-      const matches = certificates.filter((cert) => {
-        const matchCode = isCodeMatch(cert.code, query);
-        const matchId = normalizeStr(cert.idNumber) === cleanQuery && cleanQuery.length >= 6;
-        return matchCode || matchId;
-      });
+    setNetworkError('');
+    setNotFoundMessage('');
+    setSelectedResult(null);
 
-      setSearchResults(matches);
-      setSelectedResult(matches.length > 0 ? matches[0] : null);
+    try {
+      const result = await verifyCertificateByCode(cleanQuery);
+
+      if (result.valido && result.certificate) {
+        setSelectedResult(result.certificate);
+        setNotFoundMessage('');
+      } else {
+        setSelectedResult(null);
+        setNotFoundMessage(result.mensaje || 'Certificado no encontrado');
+      }
       setHasSearched(true);
     } catch (err) {
-      console.error('Error buscando certificados:', err);
-      setSearchResults([]);
+      console.error('Error verificando certificado:', err);
       setSelectedResult(null);
+      setNetworkError(
+        'No se pudo conectar con el servidor de verificación. Por favor, verifique su conexión e intente nuevamente.'
+      );
       setHasSearched(true);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
-  // Parse URL query parameter (e.g., #/verificar-certificado?codigo=REG-BAL-2026-EC-0001)
+  // Lectura automática desde QR o parámetros de URL (?codigo=BAL-LOISAM1-2026-001)
   useEffect(() => {
     const parseUrlParams = () => {
-      const fullUrl = window.location.href;
       let queryParam = '';
 
-      if (fullUrl.includes('?')) {
-        const queryStr = fullUrl.split('?')[1];
-        const params = new URLSearchParams(queryStr);
-        queryParam = params.get('codigo') || params.get('code') || params.get('cedula') || params.get('id') || '';
+      if (window.location.search) {
+        const searchParams = new URLSearchParams(window.location.search);
+        queryParam = searchParams.get('codigo') || searchParams.get('code') || '';
+      }
+
+      if (!queryParam && window.location.hash.includes('?')) {
+        const hashQuery = window.location.hash.split('?')[1];
+        const hashParams = new URLSearchParams(hashQuery);
+        queryParam = hashParams.get('codigo') || hashParams.get('code') || '';
       }
 
       if (queryParam) {
@@ -88,8 +72,12 @@ export default function VerificarCertificado({ onOpenContact }) {
 
     parseUrlParams();
     window.addEventListener('hashchange', parseUrlParams);
-    return () => window.removeEventListener('hashchange', parseUrlParams);
-  }, []);
+    window.addEventListener('popstate', parseUrlParams);
+    return () => {
+      window.removeEventListener('hashchange', parseUrlParams);
+      window.removeEventListener('popstate', parseUrlParams);
+    };
+  }, [executeSearch]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -98,14 +86,20 @@ export default function VerificarCertificado({ onOpenContact }) {
 
   const handleClearSearch = () => {
     setSearchQuery('');
-    setSearchResults([]);
     setSelectedResult(null);
     setHasSearched(false);
-    window.location.hash = '#/verificar-certificado';
+    setNotFoundMessage('');
+    setNetworkError('');
+
+    if (window.location.pathname.includes('/verificar-certificado')) {
+      window.history.replaceState({}, '', '/verificar-certificado');
+    } else if (window.location.hash) {
+      window.location.hash = '#/verificar-certificado';
+    }
   };
 
   const handleCopyLink = (code) => {
-    const url = `${window.location.origin}${window.location.pathname}#/verificar-certificado?codigo=${encodeURIComponent(code)}`;
+    const url = `${window.location.origin}/verificar-certificado?codigo=${encodeURIComponent(code)}`;
     navigator.clipboard.writeText(url).then(() => {
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2500);
@@ -121,7 +115,7 @@ export default function VerificarCertificado({ onOpenContact }) {
 
         <div className="container">
           <div className="breadcrumbs">
-            <a href="#">Inicio</a> &gt; <span className="current">Verificación de Certificados</span>
+            <a href="/">Inicio</a> &gt; <span className="current">Verificación de Certificados</span>
           </div>
 
           <div className="cert-header-badge">
@@ -134,7 +128,7 @@ export default function VerificarCertificado({ onOpenContact }) {
 
           <h1>CONSULTA Y VALIDACIÓN DE CERTIFICADOS</h1>
           <p className="subpage-subtitle">
-            Verifique la autenticidad y registro académico de los certificados de capacitación continua emitidos por BALUARTALENT & Co.
+            Verifique la autenticidad y registro académico de los certificados de capacitación continua emitidos por BALUARTALENT &amp; Co.
           </p>
         </div>
       </header>
@@ -142,7 +136,6 @@ export default function VerificarCertificado({ onOpenContact }) {
       {/* Main Section */}
       <section className="subpage-content section-padding" style={{ position: 'relative' }}>
         <div className="container" style={{ maxWidth: '980px' }}>
-          
           {/* Search Card */}
           <div className="cert-search-card">
             <div className="cert-search-icon-bubble">
@@ -151,9 +144,9 @@ export default function VerificarCertificado({ onOpenContact }) {
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
             </div>
-            <h3>Ingrese Código de Registro o C.I.</h3>
+            <h3>Ingrese Código del Certificado</h3>
             <p className="cert-search-subtitle">
-              Consulte ingresando el código del certificado o número de cédula de identidad del participante.
+              Consulte ingresando el código único de registro que aparece en el certificado (ej. BAL-LOISAM1-2026-001).
             </p>
 
             <form onSubmit={handleSearchSubmit} className="cert-search-form">
@@ -167,15 +160,15 @@ export default function VerificarCertificado({ onOpenContact }) {
                 <input
                   type="text"
                   className="cert-input"
-                  placeholder="Código de registro o C.I."
+                  placeholder="Código de registro (ej. BAL-LOISAM1-2026-001)"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  aria-label="Código de registro o cédula de identidad"
+                  aria-label="Código de registro del certificado"
                   required
                 />
                 {searchQuery && (
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     className="cert-input-clear-btn"
                     onClick={handleClearSearch}
                     aria-label="Limpiar búsqueda"
@@ -205,38 +198,19 @@ export default function VerificarCertificado({ onOpenContact }) {
             </form>
           </div>
 
-          {/* Multiple Certificates Selector (if participant has more than 1 certificate registered) */}
-          {hasSearched && searchResults.length > 1 && (
-            <div className="cert-multi-selector-box animate-fade-in" style={{ marginBottom: '1.5rem' }}>
-              <div className="cert-multi-header">
-                <span className="cert-multi-count-badge">
-                  {searchResults.length} Certificados Registrados
-                </span>
-                <p style={{ margin: 0, fontSize: '0.92rem', color: 'var(--text-muted)' }}>
-                  Seleccione el programa o curso que desea visualizar:
-                </p>
-              </div>
-              <div className="cert-multi-list">
-                {searchResults.map((cert) => (
-                  <button
-                    key={cert.code}
-                    type="button"
-                    className={`cert-multi-item ${selectedResult?.code === cert.code ? 'active' : ''}`}
-                    onClick={() => setSelectedResult(cert)}
-                  >
-                    <div className="cert-multi-item-title">{cert.courseName}</div>
-                    <div className="cert-multi-item-meta">
-                      <span className="code-pill">{cert.code}</span>
-                      <span className="hours-pill">{cert.durationText}</span>
-                    </div>
-                  </button>
-                ))}
-              </div>
+          {/* Loading State */}
+          {isLoading && (
+            <div className="cert-loading-card animate-fade-in" role="status" aria-live="polite">
+              <svg className="spinner-icon" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <circle cx="12" cy="12" r="10" strokeDasharray="32" strokeDashoffset="12" strokeLinecap="round"></circle>
+              </svg>
+              <h3>Verificando certificado...</h3>
+              <p>Consultando el registro oficial en nuestro servidor seguro. Por favor espere un momento.</p>
             </div>
           )}
 
           {/* Results Area */}
-          {hasSearched && selectedResult && (
+          {hasSearched && !isLoading && selectedResult && (
             <div className="cert-result-container animate-fade-in">
               {/* Authenticity Banner */}
               <div className="cert-auth-banner">
@@ -248,7 +222,7 @@ export default function VerificarCertificado({ onOpenContact }) {
                 </div>
                 <div className="cert-auth-texts">
                   <h4>CERTIFICADO AUTÉNTICO Y REGISTRADO</h4>
-                  <p>Este documento ha sido verificado con éxito en la base de datos oficial de BALUARTALENT & Co. Consultoría Integral.</p>
+                  <p>Este documento ha sido verificado con éxito en la base de datos oficial de BALUARTALENT &amp; Co. Consultoría Integral.</p>
                 </div>
                 <div className="cert-auth-seal-pill">
                   <span>ESTADO: {selectedResult.status || 'VÁLIDO'}</span>
@@ -290,15 +264,17 @@ export default function VerificarCertificado({ onOpenContact }) {
                         </svg>
                         Carga Horaria: {selectedResult.durationText || `${selectedResult.durationHours} Horas`}
                       </span>
-                      <span className="cert-dates-pill">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                          <line x1="16" y1="2" x2="16" y2="6"></line>
-                          <line x1="8" y1="2" x2="8" y2="6"></line>
-                          <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
-                        Efectuado en: {selectedResult.executionDates}
-                      </span>
+                      {selectedResult.executionDates && (
+                        <span className="cert-dates-pill">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                          </svg>
+                          Modalidad / Fechas: {selectedResult.executionDates}
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -318,7 +294,7 @@ export default function VerificarCertificado({ onOpenContact }) {
                     </div>
                     <div className="cert-detail-item">
                       <span className="cert-detail-label">Acreditación Académica</span>
-                      <span className="cert-detail-val">{selectedResult.signatory} ({selectedResult.signatoryRole})</span>
+                      <span className="cert-detail-val">{selectedResult.fullSignatory}</span>
                     </div>
                   </div>
                 </div>
@@ -333,8 +309,8 @@ export default function VerificarCertificado({ onOpenContact }) {
                   </div>
 
                   <div className="cert-footer-actions">
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className={`btn-cert-secondary ${copiedLink ? 'copied' : ''}`}
                       onClick={() => handleCopyLink(selectedResult.code)}
                     >
@@ -356,11 +332,11 @@ export default function VerificarCertificado({ onOpenContact }) {
                       )}
                     </button>
 
-                    {selectedResult.pdfUrl && (
-                      <a 
-                        href={selectedResult.pdfUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                    {selectedResult.pdfUrl && selectedResult.pdfUrl.startsWith('http') ? (
+                      <a
+                        href={selectedResult.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="btn btn-primary btn-cert-download"
                       >
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -368,8 +344,16 @@ export default function VerificarCertificado({ onOpenContact }) {
                           <polyline points="7 10 12 15 17 10"></polyline>
                           <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
-                        Descargar Certificado Oficial (PDF)
+                        Ver / Descargar Certificado PDF
                       </a>
+                    ) : (
+                      <span className="cert-pdf-pending">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        Documento PDF en proceso de carga
+                      </span>
                     )}
                   </div>
                 </div>
@@ -377,19 +361,36 @@ export default function VerificarCertificado({ onOpenContact }) {
             </div>
           )}
 
+          {/* Network Error State */}
+          {hasSearched && !isLoading && networkError && (
+            <div className="cert-not-found-card animate-fade-in" role="alert">
+              <div className="cert-not-found-icon">🔌</div>
+              <h3>Error de conexión</h3>
+              <p>{networkError}</p>
+              <div className="cert-not-found-actions">
+                <button type="button" className="btn btn-primary" onClick={() => executeSearch(searchQuery)}>
+                  Reintentar consulta
+                </button>
+                <button type="button" className="btn btn-secondary" onClick={handleClearSearch}>
+                  Limpiar búsqueda
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Not Found State */}
-          {hasSearched && !isLoading && searchResults.length === 0 && (
+          {hasSearched && !isLoading && !networkError && !selectedResult && (
             <div className="cert-not-found-card animate-fade-in">
               <div className="cert-not-found-icon">⚠️</div>
-              <h3>Certificado no encontrado</h3>
+              <h3>{notFoundMessage || 'Certificado no encontrado'}</h3>
               <p>
-                No se encontró ningún certificado registrado bajo el código o documento <strong>"{searchQuery}"</strong>.
+                No se encontró ningún certificado registrado bajo el código <strong>&quot;{searchQuery}&quot;</strong>.
               </p>
               <div className="cert-not-found-tips">
                 <strong>Recomendaciones:</strong>
                 <ul>
                   <li>Verifique que el código esté escrito tal como aparece en el certificado físico o digital.</li>
-                  <li>Si busca por documento de identidad, ingrese únicamente números sin guiones ni espacios.</li>
+                  <li>Incluya los guiones exactamente como figuran en su documento (ej. BAL-LOISAM1-2026-001).</li>
                   <li>Los certificados emitidos recientemente pueden tardar unos instantes en reflejarse en el sistema online.</li>
                 </ul>
               </div>
@@ -397,10 +398,10 @@ export default function VerificarCertificado({ onOpenContact }) {
                 <button type="button" className="btn btn-secondary" onClick={handleClearSearch}>
                   Intentar con otro código
                 </button>
-                <a 
-                  href="https://api.whatsapp.com/send?phone=593964196795&text=Hola%20BALUARTALENT%20%26%20Co.,%20tengo%20una%20consulta%20sobre%20la%20validaci%C3%B3n%20de%20mi%20certificado" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://api.whatsapp.com/send?phone=593964196795&text=Hola%20BALUARTALENT%20%26%20Co.,%20tengo%20una%20consulta%20sobre%20la%20validaci%C3%B3n%20de%20mi%20certificado"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-primary"
                   style={{ background: '#25D366' }}
                 >
@@ -444,7 +445,6 @@ export default function VerificarCertificado({ onOpenContact }) {
               <p>Programas diseñados bajo altos estándares pedagógicos y marco normativo ecuatoriano en gestión del talento humano y desarrollo corporativo.</p>
             </div>
           </div>
-
         </div>
       </section>
     </div>

@@ -146,7 +146,7 @@ export default function VerificarCertificado({ onOpenContact }) {
             </div>
             <h3>Ingrese Código del Certificado</h3>
             <p className="cert-search-subtitle">
-              Consulte ingresando el código único de registro que aparece en el certificado (ej. BAL-LOISAM1-2026-001).
+              Consulte ingresando el código único de registro que aparece en el certificado.
             </p>
 
             <form onSubmit={handleSearchSubmit} className="cert-search-form">
@@ -160,7 +160,7 @@ export default function VerificarCertificado({ onOpenContact }) {
                 <input
                   type="text"
                   className="cert-input"
-                  placeholder="Código de registro (ej. BAL-LOISAM1-2026-001)"
+                  placeholder="Código de registro"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   aria-label="Código de registro del certificado"
@@ -390,7 +390,7 @@ export default function VerificarCertificado({ onOpenContact }) {
                 <strong>Recomendaciones:</strong>
                 <ul>
                   <li>Verifique que el código esté escrito tal como aparece en el certificado físico o digital.</li>
-                  <li>Incluya los guiones exactamente como figuran en su documento (ej. BAL-LOISAM1-2026-001).</li>
+                  <li>Incluya los guiones exactamente como figuran en su documento.</li>
                   <li>Los certificados emitidos recientemente pueden tardar unos instantes en reflejarse en el sistema online.</li>
                 </ul>
               </div>
